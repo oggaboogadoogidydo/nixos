@@ -185,11 +185,9 @@
 
   # Browsers
     firefox
-    # tor  # Didnt install
-    # ungoogled-chromium # Keeps crashing
+    tor-browser
 
   # Office Suite
-    # libreoffice-still
     libreoffice-qt-fresh
 
   # Utilities
