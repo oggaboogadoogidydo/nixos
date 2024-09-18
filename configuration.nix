@@ -214,7 +214,7 @@
     dwarf-fortress-packages.dwarf-fortress-full
 
   # Apps
-    vscode
+    neovim
     kuro # Issue with electron version
     ferdium # Messaging app
     kicad
