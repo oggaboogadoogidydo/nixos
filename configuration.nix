@@ -205,6 +205,8 @@
     sl
     rink
     nvtopPackages.nvidia
+    fff
+    thefuck
 
   # Games
     steam
