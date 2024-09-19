@@ -177,7 +177,6 @@
     wlroots
     wofi # App Launcher
     hyprlock
-    kdePackages.dolphin
 
   # Sound
     pavucontrol
