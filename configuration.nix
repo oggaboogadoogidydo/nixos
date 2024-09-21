@@ -61,6 +61,8 @@
   };
 
   # Asus Required
+  programs.rog-control-center.autoStart = true;
+  programs.rog-control-center.enable = true;
   services.supergfxd.enable = true;
   services = {
     asusd = {
