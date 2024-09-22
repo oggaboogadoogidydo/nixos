@@ -193,21 +193,21 @@
 
   # Utilities
     git
-    kitty
+    kitty # Terminal
     networkmanagerapplet
-    wget
-    eza
-    btop
-    gh
-    ani-cli
-    ytmdl
-    yewtube
-    drive
-    sl
-    rink
+    wget # Download from internet source
+    eza # Better ls
+    btop # Monitor
+    gh # Github cli
+    ani-cli # Watch Anime from cli
+    ytmdl # Download music with all attached metadata
+    yewtube # Consider removing, do not use
+    drive # Consider removing, do not use
+    sl # cute but unneccessary
+    rink # Very helpful math solver
     nvtopPackages.nvidia
-    fff
-    thefuck
+    fff # cli file explore
+    thefuck # Command fixer, Needs to be setup, Consider removing
 
   # Games
     steam
@@ -218,19 +218,19 @@
 
   # Apps
     neovim
-    kuro # Issue with electron version
-    ferdium # Messaging app
-    kicad
-    # github-desktop
+    kuro # Issue with electron version - Out of date, Replace with my own nixpkg
+    ferdium # Messaging app - Out of date, Replace with my own nixpkg
+    kicad 
     pwsafe
     logseq # Uses Insecure Electron version and breaks often
-    evolution
+    evolution 
     vmware-workstation
-    vmware-horizon-client
-    ollama
+    vmware-horizon-client # Doesn't seem to work, Consider removing
+    ollama # Old version, Need to replace with my own nixpkg
     blender
     freecad
     openscad
+    nuclear # Music Player
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
