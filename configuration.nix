@@ -234,6 +234,7 @@
     nvtopPackages.nvidia
     fff # cli file explore
     thefuck # Command fixer, Needs to be setup, Consider removing
+    p7zip
 
   # Games
     steam
