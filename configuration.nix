@@ -251,13 +251,12 @@
     pwsafe
     logseq # Uses Insecure Electron version and breaks often
     evolution 
-    vmware-workstation
-    vmware-horizon-client # Doesn't seem to work, Consider removing
+    virtualbox # VM client
     ollama # Old version, Need to replace with my own nixpkg
     blender
     freecad
     openscad
-    nuclear # Music Player
+    libsForQt5.audiotube # Music player
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
