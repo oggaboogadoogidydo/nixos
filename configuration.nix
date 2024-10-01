@@ -180,9 +180,6 @@
 
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.guest.draganddrop = true;
-  virtualisation.virtualbox.guest.clipboard = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -254,7 +251,6 @@
     pwsafe
     logseq # Uses Insecure Electron version and breaks often
     evolution 
-    virtualbox # VM client
     ollama # Old version, Need to replace with my own nixpkg
     blender
     freecad
