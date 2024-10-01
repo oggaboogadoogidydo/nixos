@@ -56,7 +56,7 @@
   users.users.bobw = {
     isNormalUser = true;
     description = "BobW";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
     packages = with pkgs; [];
   };
 
@@ -178,8 +178,11 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
-  # VMWare
-  virtualisation.vmware.host.enable = true;
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.draganddrop = true;
+  virtualisation.virtualbox.guest.clipboard = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
