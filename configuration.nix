@@ -180,6 +180,11 @@
 
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "bobw" ];
+
+  # VMWare
+  virtualisation.vmware.host.enable = true;
+  
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
