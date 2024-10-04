@@ -244,7 +244,6 @@
   # Games
     steam
     modrinth-app
-    minecraft
     bastet
     ninvaders
     dwarf-fortress-packages.dwarf-fortress-full
