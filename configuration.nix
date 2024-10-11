@@ -240,6 +240,9 @@
     fff # cli file explore
     thefuck # Command fixer, Needs to be setup, Consider removing
     p7zip
+    appimage-run
+    usbtop
+    usbutils
 
   # Games
     steam
