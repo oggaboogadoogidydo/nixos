@@ -238,7 +238,6 @@
     rink # Very helpful math solver
     nvtopPackages.nvidia
     fff # cli file explore
-    thefuck # Command fixer, Needs to be setup, Consider removing
     p7zip
     appimage-run
     usbtop
@@ -257,7 +256,7 @@
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
     kicad 
     pwsafe
-    logseq # Uses Insecure Electron version and breaks often
+    logseq
     evolution 
     ollama # Old version, Need to replace with my own nixpkg
     blender
@@ -267,7 +266,7 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
+    # "electron-27.3.11"
     "electron-29.4.6"
   ];
 
