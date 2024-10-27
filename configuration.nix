@@ -201,6 +201,7 @@
   # Hyprland
     hyprland
     mpvpaper # For wallpapers
+    hyprpaper # For Static wallpapers
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     xwayland
@@ -257,7 +258,7 @@
     kicad 
     pwsafe
     logseq
-    evolution 
+    thunderbird
     ollama # Old version, Need to replace with my own nixpkg
     blender
     freecad
