@@ -243,6 +243,7 @@
     appimage-run
     usbtop
     usbutils
+    rclone
 
   # Games
     steam
