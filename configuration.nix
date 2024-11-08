@@ -264,6 +264,7 @@
     blender
     freecad
     openscad
+    sweethome3d.application
     libsForQt5.audiotube # Music player
   ];
 
