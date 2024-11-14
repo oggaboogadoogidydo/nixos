@@ -262,7 +262,7 @@
     pwsafe
     logseq
     thunderbird
-    ollama # Old version, Need to replace with my own nixpkg
+    unstable.ollama # Old version, Need to replace with my own nixpkg
     blender
     freecad
     openscad
