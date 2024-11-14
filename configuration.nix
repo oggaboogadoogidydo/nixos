@@ -244,6 +244,7 @@
     usbtop
     usbutils
     rclone
+    docker
 
   # Games
     steam
