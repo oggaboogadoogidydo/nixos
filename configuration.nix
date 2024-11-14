@@ -245,6 +245,7 @@
     usbutils
     rclone
     docker
+    nvidia-container-toolkit
 
   # Games
     steam
