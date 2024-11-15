@@ -188,9 +188,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  packageOverrides = pkgs: {
+  # Allow unstable packages
+  nixpkgs.config.packageOverrides = pkgs: {
 	unstable = import <unstable> {
-	  config = config.nxpkgs.config;
+	  config = config.nixpkgs.config;
 	};
   };
   # List packages installed in system profile. To search, run:
@@ -237,12 +238,8 @@
     gh # Github cli
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
-    yewtube # Consider removing, do not use
-    drive # Consider removing, do not use
-    sl # cute but unneccessary
     rink # Very helpful math solver
     nvtopPackages.nvidia
-    fff # cli file explore
     p7zip
     appimage-run
     usbtop
@@ -250,6 +247,7 @@
     rclone
     docker
     nvidia-container-toolkit
+    beets
 
   # Games
     steam
@@ -266,7 +264,7 @@
     pwsafe
     logseq
     thunderbird
-    unstable.ollama # Old version, Need to replace with my own nixpkg
+    unstable.ollama-cuda
     blender
     freecad
     openscad
