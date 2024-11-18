@@ -248,6 +248,7 @@
     docker
     nvidia-container-toolkit
     beets
+    kdePackages.kdeconnect-kde
 
   # Games
     steam
