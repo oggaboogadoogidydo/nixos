@@ -271,6 +271,7 @@
     openscad
     sweethome3d.application
     libsForQt5.audiotube # Music player
+    thonny
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
