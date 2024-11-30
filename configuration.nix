@@ -56,10 +56,77 @@
   users.users.bobw = {
     isNormalUser = true;
     description = "BobW";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
-    packages = with pkgs; [];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" ];
+    packages = with pkgs; [
+    
+  # Hyprland
+    hyprland
+    mpvpaper # For wallpapers
+    hyprpaper # For Static wallpapers
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xwayland
+    wayland-protocols
+    wayland-utils 
+    wl-clipboard
+    wlroots
+    wofi # App Launcher
+    hyprlock
+
+  # Utilities
+    gh # Github cli
+    ani-cli # Watch Anime from cli
+    ytmdl # Download music with all attached metadata
+    rink # Very helpful math solver
+    appimage-run
+    rclone
+    docker
+    nvidia-container-toolkit
+    beets
+    kdePackages.kdeconnect-kde
+
+  # Games
+    steam
+    modrinth-app
+    bastet
+    ninvaders
+    dwarf-fortress-packages.dwarf-fortress-full
+
+  # Apps
+    neovim
+    kuro # Issue with electron version - Out of date, Replace with my own nixpkg
+    ferdium # Messaging app - Out of date, Replace with my own nixpkg
+    kicad 
+    pwsafe
+    logseq
+    thunderbird
+    unstable.ollama-cuda
+    blender
+    freecad
+    openscad
+    sweethome3d.application
+    libsForQt5.audiotube # Music player
+    thonny
+    ];
   };
 
+  users.users.other = {
+    inNormalUser = true;
+    description = "Demo Account";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+
+  # desktop enviroment
+    cinnamon.cinnamon-common
+
+  # Browsers
+    chromium
+  ];
+  services.xserver = {
+    enable = true;
+    desktopManager.cinnamon.enable = true;
+  };
+};
 
   # Power Managment
   # Asus Required
@@ -203,75 +270,20 @@
     supergfxctl
     asusctl
 
-  # Hyprland
-    hyprland
-    mpvpaper # For wallpapers
-    hyprpaper # For Static wallpapers
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    xwayland
-    wayland-protocols
-    wayland-utils
-    wl-clipboard
-    wlroots
-    wofi # App Launcher
-    hyprlock
-
   # Sound
     pavucontrol
     pipewire
 
-  # Browsers
-    firefox
-    tor-browser
-
-  # Office Suite
-    libreoffice-qt-fresh
-
   # Utilities
     git
     kitty # Terminal
+    wget
     networkmanagerapplet
-    wget # Download from internet source
-    eza # Better ls
     btop # Monitor
-    gh # Github cli
-    ani-cli # Watch Anime from cli
-    ytmdl # Download music with all attached metadata
-    rink # Very helpful math solver
     nvtopPackages.nvidia
     p7zip
-    appimage-run
     usbtop
     usbutils
-    rclone
-    docker
-    nvidia-container-toolkit
-    beets
-    kdePackages.kdeconnect-kde
-
-  # Games
-    steam
-    modrinth-app
-    bastet
-    ninvaders
-    dwarf-fortress-packages.dwarf-fortress-full
-
-  # Apps
-    neovim
-    kuro # Issue with electron version - Out of date, Replace with my own nixpkg
-    ferdium # Messaging app - Out of date, Replace with my own nixpkg
-    kicad 
-    pwsafe
-    logseq
-    thunderbird
-    unstable.ollama-cuda
-    blender
-    freecad
-    openscad
-    sweethome3d.application
-    libsForQt5.audiotube # Music player
-    thonny
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
