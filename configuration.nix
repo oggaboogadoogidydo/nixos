@@ -111,7 +111,7 @@
   };
 
   users.users.other = {
-    inNormalUser = true;
+    isNormalUser = true;
     description = "Demo Account";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
