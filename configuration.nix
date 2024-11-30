@@ -122,10 +122,10 @@
   # Browsers
     chromium
   ];
-  services.xserver = {
-    enable = true;
-    desktopManager.cinnamon.enable = true;
-  };
+#  services.xserver = {
+#    enable = true;
+#    desktopManager.cinnamon.enable = true;
+#  };
 };
 
   # Power Managment
