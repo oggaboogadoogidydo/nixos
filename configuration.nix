@@ -112,6 +112,7 @@
 
   users.users.other = {
     isNormalUser = true;
+    password = "12345678";
     description = "Demo Account";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
