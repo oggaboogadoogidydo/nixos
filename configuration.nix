@@ -249,6 +249,7 @@
     nvidia-container-toolkit
     beets
     kdePackages.kdeconnect-kde
+    bluez
 
   # Games
     steam
