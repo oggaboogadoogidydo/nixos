@@ -178,6 +178,11 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "bobw" ];
@@ -249,7 +254,6 @@
     nvidia-container-toolkit
     beets
     kdePackages.kdeconnect-kde
-    bluez
 
   # Games
     steam
