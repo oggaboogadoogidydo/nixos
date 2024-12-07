@@ -256,6 +256,7 @@
     bastet
     ninvaders
     dwarf-fortress-packages.dwarf-fortress-full
+    unstable.shadps4
 
   # Apps
     neovim
