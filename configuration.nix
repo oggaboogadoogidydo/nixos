@@ -273,7 +273,7 @@
     freecad
     openscad 
     sweethome3d.application # floor plan designer
-    ytermusic # terminal music player
+    ytui-music # terminal music player
     thonny # RP IDE
   ];
 
