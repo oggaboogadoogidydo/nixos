@@ -280,6 +280,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11"
     "electron-29.4.6"
+    "python3.11-youtube-dl-2021.12.17"
   ];
 
   nixpkgs.overlays = [
