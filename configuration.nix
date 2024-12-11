@@ -202,14 +202,13 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    
+        
   # Asus
-    supergfxctl
-    asusctl
+    supergfxctl # Asus control Application
+    asusctl # Asus control system
 
   # Hyprland
-    hyprland
+    hyprland # Hyprland window manager
     mpvpaper # For wallpapers
     hyprpaper # For Static wallpapers
     xdg-desktop-portal-gtk
@@ -217,14 +216,14 @@
     xwayland
     wayland-protocols
     wayland-utils
-    wl-clipboard
+    wl-clipboard # Clipboard
     wlroots
     wofi # App Launcher
-    hyprlock
+    hyprlock # Lock manager
 
   # Sound
-    pavucontrol
-    pipewire
+    pavucontrol # GUI Sound control
+    pipewire # Sound application
 
   # Browsers
     firefox
@@ -234,9 +233,9 @@
     libreoffice-qt-fresh
 
   # Utilities
-    git
+    git # Git
     kitty # Terminal
-    networkmanagerapplet
+    networkmanagerapplet # GUI for configuring network manager connections
     wget # Download from internet source
     eza # Better ls
     btop # Monitor
@@ -244,40 +243,38 @@
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
     rink # Very helpful math solver
-    nvtopPackages.nvidia
-    p7zip
-    appimage-run
-    usbtop
-    usbutils
-    rclone
-    docker
-    nvidia-container-toolkit
-    beets
-    kdePackages.kdeconnect-kde
+    nvtopPackages.nvidia # GPU Monitor
+    p7zip # Zip tool
+    appimage-run # Runs zen browser until packaged
+    usbtop # Monitor for USB devices
+    usbutils # Easy USB device plug and play
+    docker # Run docker containers
+    nvidia-container-toolkit # pass docker containers the gpu
+    beets # Music library manager
+#   kdePackages.kdeconnect-kde # KDE Connect - Does Not Work
 
   # Games
-    steam
-    modrinth-app
+    steam # Steam
+    modrinth-app # Minecraft modpack client
     bastet
     ninvaders
-    dwarf-fortress-packages.dwarf-fortress-full
-    unstable.shadps4
+    dwarf-fortress-packages.dwarf-fortress-full # Dwarf fortress - terminal edition
+    unstable.shadps4 # PS4 emulator
 
   # Apps
-    neovim
     kuro # Issue with electron version - Out of date, Replace with my own nixpkg
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
-    kicad 
-    pwsafe
-    logseq
-    thunderbird
-    unstable.ollama-cuda
+    kicad # PCB Cad
+    pwsafe # Password database
+    logseq # Note Taking Application
+    thunderbird # Mail Client
+    unstable.ollama-cuda # Local AI
     blender
     freecad
-    openscad
-    sweethome3d.application
-    libsForQt5.audiotube # Music player
-    thonny
+    openscad 
+    sweethome3d.application # floor plan designer
+    ytermusic # terminal music player
+    thonny # RP IDE
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
