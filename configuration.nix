@@ -231,6 +231,7 @@
 
   # Office Suite
     libreoffice-qt-fresh
+    dropbox
 
   # Utilities
     git # Git
