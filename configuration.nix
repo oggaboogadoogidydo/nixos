@@ -270,7 +270,7 @@
     thunderbird # Mail Client
     unstable.ollama-cuda # Local AI
     blender
-    freecad
+    unstable.freecad-wayland # CAD software
     openscad 
     sweethome3d.application # floor plan designer
     ytui-music # terminal music player
