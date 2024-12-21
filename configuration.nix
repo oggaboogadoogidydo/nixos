@@ -230,9 +230,9 @@
     tor-browser
 
   # Office Suite
-    libreoffice-qt-fresh
-    dropbox
-
+    libreoffice-qt-fresh # Office Suite
+    unstable.dropbox # Dropbox Client - Unsure if works
+    glow # CLI MD render
   # Utilities
     git # Git
     kitty # Terminal
