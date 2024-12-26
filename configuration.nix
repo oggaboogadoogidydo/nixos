@@ -256,8 +256,10 @@
 #   kdePackages.kdeconnect-kde # KDE Connect - Does Not Work
 
   # Drivers
-    unstable.spacenavd
-    unstable.spacenav-cube-example
+    unstable.spacenavd # Device Driver
+    unstable.spacenav-cube-example # Cube Test
+    unstable.spnavcfg # GUI Config for Space Nav
+    unstable.libspnav # Device Driver
 
   # Games
     steam # Steam
