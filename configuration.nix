@@ -233,6 +233,7 @@
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
+
   # Utilities
     git # Git
     kitty # Terminal
@@ -253,6 +254,10 @@
     nvidia-container-toolkit # pass docker containers the gpu
     beets # Music library manager
 #   kdePackages.kdeconnect-kde # KDE Connect - Does Not Work
+
+  # Drivers
+    unstable.spacenavd
+    unstable.spacenav-cube-example
 
   # Games
     steam # Steam
