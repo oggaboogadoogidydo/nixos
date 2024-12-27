@@ -171,8 +171,9 @@
     jack.enable = true;
   };
   sound.mediaKeys.enable = true;
-  hardware.pulseaudio.enable = true;
   programs.bash.undistractMe.playSound = true;
+
+  hardware.enableAllFirmware = true;
 
   # Steam
   programs.steam = {
