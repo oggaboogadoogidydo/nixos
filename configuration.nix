@@ -166,7 +166,7 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-#    alsa.support32bit = true;  # Listed as does not exist
+    alsa.support32Bit = true;  # Listed as does not exist
     pulse.enable = true;
     jack.enable = true;
   };
