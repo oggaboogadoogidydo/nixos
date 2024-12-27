@@ -168,7 +168,11 @@
     alsa.enable = true;
 #    alsa.support32bit = true;  # Listed as does not exist
     pulse.enable = true;
+    jack.enable = true;
   };
+  sound.mediaKeys.enable = true;
+  hardware.pulseaudio.enable = true;
+  programs.bash.undistractMe.playSound = true;
 
   # Steam
   programs.steam = {
