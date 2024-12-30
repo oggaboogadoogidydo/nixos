@@ -238,6 +238,7 @@
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
+    unstable.skypeforlinux
 
   # Utilities
     git # Git
