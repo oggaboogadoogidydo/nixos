@@ -238,7 +238,8 @@
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
-    
+    vim # Text editor
+    unstable.waveterm # ai modern termainal emulator
 
   # Utilities
     git # Git
@@ -259,6 +260,7 @@
     docker # Run docker containers
     nvidia-container-toolkit # pass docker containers the gpu
     beets # Music library manager
+    warpd # keyboard mouse controller
 
   # Drivers
     unstable.spacenavd # Device Driver
@@ -268,7 +270,7 @@
 
   # Languages
     python3 # Python
-    rustc # Rust cargo manager
+    rustup # Rust toolchain
     jdk11 # java ll
     jdk17 # Java 17
     gcc_multi # C compiler collection for several languages
