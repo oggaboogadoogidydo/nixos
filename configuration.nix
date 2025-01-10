@@ -238,7 +238,7 @@
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
-    unstable.skypeforlinux
+    
 
   # Utilities
     git # Git
@@ -250,7 +250,7 @@
     gh # Github cli
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
-    rink # Very helpful math solver
+    numbat # Very helpful math solver
     nvtopPackages.nvidia # GPU Monitor
     p7zip # Zip tool
     appimage-run # Runs zen browser until packaged
@@ -259,7 +259,6 @@
     docker # Run docker containers
     nvidia-container-toolkit # pass docker containers the gpu
     beets # Music library manager
-#   kdePackages.kdeconnect-kde # KDE Connect - Does Not Work
 
   # Drivers
     unstable.spacenavd # Device Driver
@@ -268,10 +267,11 @@
     unstable.libspnav # Device Driver
 
   # Languages
-    python3
-    rustc
-    jdk11
-    jdk17
+    python3 # Python
+    rustc # Rust cargo manager
+    jdk11 # java ll
+    jdk17 # Java 17
+    gcc_multi # C compiler collection for several languages
 
   # Games
     steam # Steam
@@ -295,6 +295,7 @@
     sweethome3d.application # floor plan designer
     ytui-music # terminal music player
     thonny # RP IDE
+    youtube-music # youtube music client
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
