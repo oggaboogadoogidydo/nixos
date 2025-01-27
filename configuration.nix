@@ -288,7 +288,7 @@
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
     kicad # PCB Cad
     pwsafe # Password database
-    trilium-next-desktop # trilium notes allow for more features and server
+    #unstable.trilium-next-desktop # trilium notes allow for more features and server
     logseq # Note Taking Application
     thunderbird # Mail Client
     unstable.ollama-cuda # Local AI
@@ -296,9 +296,7 @@
     unstable.freecad-wayland # CAD software
     openscad 
     sweethome3d.application # floor plan designer
-    ytui-music # terminal music player
     thonny # RP IDE
-    youtube-music # youtube music client
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
