@@ -56,10 +56,13 @@
   users.users.bobw = {
     isNormalUser = true;
     description = "BobW";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" ];
     packages = with pkgs; [];
   };
 
+  # Allow for system auto upgrade
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = false;
 
   # Power Managment
   # Asus Required
@@ -74,6 +77,7 @@
       enableUserService = true;
     };
   };
+
   # tlp
   services.tlp = {
       enable = true;
@@ -98,15 +102,11 @@
 
 
   # Enable Nvidia GPU
-  
-    # Enable OpenGL
-    hardware.opengl = {
-      enable = true;
-    };
 
     # Load nvidia driver for Xorg and Wayland
     services.xserver.videoDrivers = ["nvidia"];
 
+    hardware.graphics.enable = true;
     hardware.nvidia = {
 
       # Modesetting is required.
@@ -129,23 +129,24 @@
       # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
       # Only available from driver 515.43.04+
       # Currently alpha-quality/buggy, so false is currently the recommended setting.
-      open = false;
+      open = true;
 
       # Enable the Nvidia settings menu,
 	# accessible via `nvidia-settings`.
       nvidiaSettings = true;
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   
 
   # Hyprland config
   programs.hyprland = {
     enable = true;
+    # withUWSM = true;
     xwayland.enable = true;
-  };
-
+    };
+  
   # Hint Electron apps to use wayland
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -161,7 +162,6 @@
   };
 
   # Sound
-  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -170,7 +170,6 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  sound.mediaKeys.enable = true;
   programs.bash.undistractMe.playSound = true;
 
   hardware.enableAllFirmware = true;
@@ -213,18 +212,15 @@
     asusctl # Asus control system
 
   # Hyprland
-    hyprland # Hyprland window manager
-    mpvpaper # For wallpapers
+    # mpvpaper # For wallpapers
     hyprpaper # For Static wallpapers
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
     xwayland
     wayland-protocols
     wayland-utils
     wl-clipboard # Clipboard
-    wlroots
     wofi # App Launcher
     hyprlock # Lock manager
+    # uwsm # auto launcher via systemd
 
   # Sound
     pavucontrol # GUI Sound control
@@ -297,6 +293,7 @@
     openscad 
     sweethome3d.application # floor plan designer
     thonny # RP IDE
+    unstable.arduino-ide # Arduino IDE
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
