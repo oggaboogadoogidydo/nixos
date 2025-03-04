@@ -61,8 +61,15 @@
   };
 
   # Allow for system auto upgrade
-  # system.autoUpgrade.enable = true;
-  # system.autoUpgrade.allowReboot = false;
+  system.autoUpgrade.enable = true;
+  # Allow for system to self clean
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    persistent = true;
+    delete_generations = "+5";
+    };
+  nix.settings.auto-optimise-store = true;
 
   # Power Managment
   # Asus Required
@@ -318,7 +325,11 @@
     "electron-29.4.6"
     "python3.11-youtube-dl-2021.12.17"
   ];
-
+  
+  # Define Aliases
+  environment.shellAliases {
+    eza = eza -lh1;
+  };
   nixpkgs.overlays = [
     (
       final: prev: {
