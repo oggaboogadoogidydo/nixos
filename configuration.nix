@@ -61,8 +61,8 @@
   };
 
   # Allow for system auto upgrade
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = false;
+  # system.autoUpgrade.enable = true;
+  # system.autoUpgrade.allowReboot = false;
 
   # Power Managment
   # Asus Required
@@ -104,7 +104,7 @@
   # Enable Nvidia GPU
 
     # Load nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = ["nvidia" "amd"];
 
     hardware.graphics.enable = true;
     hardware.nvidia = {
@@ -134,18 +134,24 @@
       # Enable the Nvidia settings menu,
 	# accessible via `nvidia-settings`.
       nvidiaSettings = true;
-
+      
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
-  
+#  hardware.nvidia.prime = {
+#    offload.enable = true;
+
+#    amdgpuBusId = "PCI:9:0:0";
+#    nvidiaBusId = "PCI:1:0:0";
+#  };
+  # boot.kernelParams = ["module_blacklist=amdgpu"];
 
   # Hyprland config
   programs.hyprland = {
     enable = true;
     # withUWSM = true;
-    # xwayland.enable = true;
-    };
+    xwayland.enable = true;
+  };
   
   # Hint Electron apps to use wayland
   environment.sessionVariables = {
@@ -158,6 +164,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
     ];
   };
 
@@ -173,7 +180,16 @@
   programs.bash.undistractMe.playSound = true;
 
   hardware.enableAllFirmware = true;
-
+ 
+  services.openssh = {
+    enable = true;
+    startWhenNeeded = true;
+    settings = {
+                 X11Forwarding = true;
+                 X11UseLocalhost = false;
+               };
+    };
+  
   # Steam
   programs.steam = {
     enable = true;
@@ -221,6 +237,7 @@
     wofi # App Launcher
     hyprlock # Lock manager
     # uwsm # auto launcher via systemd
+    # egl-wayland
 
   # Sound
     pavucontrol # GUI Sound control
@@ -243,12 +260,10 @@
     networkmanagerapplet # GUI for configuring network manager connections
     wget # Download from internet source
     eza # Better ls
-    btop # Monitor
     gh # Github cli
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
     numbat # Very helpful math solver
-    nvtopPackages.nvidia # GPU Monitor
     p7zip # Zip tool
     appimage-run # Runs zen browser until packaged
     usbtop # Monitor for USB devices
@@ -257,6 +272,8 @@
     nvidia-container-toolkit # pass docker containers the gpu
     beets # Music library manager
     warpd # keyboard mouse controller
+    zenith-nvidia # startup show all computer processes
+    sniffnet # utility to veiw network usage
 
   # Drivers
     unstable.spacenavd # Device Driver
@@ -284,7 +301,7 @@
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
     kicad # PCB Cad
     pwsafe # Password database
-    #unstable.trilium-next-desktop # trilium notes allow for more features and server
+    unstable.trilium-next-desktop # trilium notes allow for more features and server
     logseq # Note Taking Application
     thunderbird # Mail Client
     unstable.ollama-cuda # Local AI
