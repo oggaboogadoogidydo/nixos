@@ -67,7 +67,6 @@
     automatic = true;
     dates = "weekly";
     persistent = true;
-    delete_generations = "+5";
     };
   nix.settings.auto-optimise-store = true;
 
@@ -327,8 +326,9 @@
   ];
   
   # Define Aliases
-  environment.shellAliases {
-    eza = eza -lh1;
+  environment.shellAliases = {
+    eza = "eza -lh1a";
+    rebuild = "sudo git add * && nixos-rebuild switch && git commit -a && git push";
   };
   nixpkgs.overlays = [
     (
