@@ -258,11 +258,11 @@
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
     vim # Text editor
-    unstable.waveterm # ai modern termainal emulator
 
   # Utilities
     git # Git
-    kitty # Terminal
+    alacritty # Terminal
+    # kitty # Terminal
     networkmanagerapplet # GUI for configuring network manager connections
     wget # Download from internet source
     eza # Better ls
@@ -276,7 +276,6 @@
     usbutils # Easy USB device plug and play
     docker # Run docker containers
     nvidia-container-toolkit # pass docker containers the gpu
-    beets # Music library manager
     warpd # keyboard mouse controller
     zenith-nvidia # startup show all computer processes
     sniffnet # utility to veiw network usage
@@ -303,17 +302,14 @@
     unstable.shadps4 # PS4 emulator
 
   # Apps
-    kuro # Issue with electron version - Out of date, Replace with my own nixpkg
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
     kicad # PCB Cad
     pwsafe # Password database
     unstable.trilium-next-desktop # trilium notes allow for more features and server
     logseq # Note Taking Application
-    thunderbird # Mail Client
     unstable.ollama-cuda # Local AI
     blender
     unstable.freecad-wayland # CAD software
-    openscad 
     sweethome3d.application # floor plan designer
     thonny # RP IDE
     unstable.arduino-ide # Arduino IDE
@@ -328,8 +324,9 @@
   # Define Aliases
   environment.shellAliases = {
     eza = "eza -lh1a";
-    rebuild = "sudo git add * && nixos-rebuild switch && git commit -a && git push";
+    rebuild = "cd /etx/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit -a && git push";
   };
+
   nixpkgs.overlays = [
     (
       final: prev: {
