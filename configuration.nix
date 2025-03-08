@@ -244,6 +244,7 @@
     hyprlock # Lock manager
     # uwsm # auto launcher via systemd
     # egl-wayland
+    wl-kbptr
 
   # Sound
     pavucontrol # GUI Sound control
@@ -276,7 +277,6 @@
     usbutils # Easy USB device plug and play
     docker # Run docker containers
     nvidia-container-toolkit # pass docker containers the gpu
-    warpd # keyboard mouse controller
     zenith-nvidia # startup show all computer processes
     sniffnet # utility to veiw network usage
 
@@ -324,7 +324,7 @@
   # Define Aliases
   environment.shellAliases = {
     eza = "eza -lh1a";
-    rebuild = "cd /etx/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit -a && git push";
+    rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit -a && git push";
   };
 
   nixpkgs.overlays = [
