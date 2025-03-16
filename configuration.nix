@@ -279,6 +279,7 @@
     nvidia-container-toolkit # pass docker containers the gpu
     zenith-nvidia # startup show all computer processes
     sniffnet # utility to veiw network usage
+    espanso-wayland #text expander utility
 
   # Drivers
     unstable.spacenavd # Device Driver
