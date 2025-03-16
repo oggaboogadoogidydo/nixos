@@ -216,6 +216,8 @@
   # VMWare
   virtualisation.vmware.host.enable = true;
   
+  # Text Expander Utility : Espanso
+  services.espanso.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -325,7 +327,7 @@
   # Define Aliases
   environment.shellAliases = {
     eza = "eza -lh1a";
-    rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit -a && git push";
+    rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit && git push";
   };
 
   nixpkgs.overlays = [
