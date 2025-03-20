@@ -316,6 +316,7 @@
     sweethome3d.application # floor plan designer
     thonny # RP IDE
     unstable.arduino-ide # Arduino IDE
+    unstable.cura-appimage # 3d Printer Slicer
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
