@@ -144,12 +144,12 @@
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
-#  hardware.nvidia.prime = {
-#    offload.enable = true;
+  hardware.nvidia.prime = {
+    offload.enable = true;
 
-#    amdgpuBusId = "PCI:9:0:0";
-#    nvidiaBusId = "PCI:1:0:0";
-#  };
+    amdgpuBusId = "PCI:9:0:0";
+    nvidiaBusId = "PCI:1:0:0";
+  };
   # boot.kernelParams = ["module_blacklist=amdgpu"];
 
   # Hyprland config
