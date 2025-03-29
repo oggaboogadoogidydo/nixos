@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the config from hardware prior
-      <hardware-g713pi/asus/rog-strix/g713pi>
+      #  <hardware-g713pi/asus/rog-strix/g713pi>
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
@@ -110,7 +110,7 @@
   # Enable Nvidia GPU
 
     # Load nvidia driver for Xorg and Wayland
-    services.xserver.videoDrivers = ["nvidia" "amd"];
+    services.xserver.videoDrivers = ["nvidia"];
 
     hardware.graphics.enable = true;
     hardware.nvidia = {
@@ -145,12 +145,23 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   hardware.nvidia.prime = {
-    offload.enable = true;
+    sync.enable = true;
 
     amdgpuBusId = "PCI:9:0:0";
     nvidiaBusId = "PCI:1:0:0";
   };
-  # boot.kernelParams = ["module_blacklist=amdgpu"];
+  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
+
+  #specialisation = {
+  #  on-the-go.configuration = {
+  #    system.nixos.tags = [ "on-the-go" ];
+  #    hardware.nvidia = {
+  #      prime.offload.enable = lib.mkForce true;
+  #      prime.offload.enableOffloadCmd = lib.mkForce true;
+  #      prime.sync.enable = lib.mkForce false;
+  #    };
+  #  };
+  #};
 
   # Hyprland config
   programs.hyprland = {
@@ -238,7 +249,7 @@
   # Hyprland
     # mpvpaper # For wallpapers
     hyprpaper # For Static wallpapers
-    # xwayland
+    xwayland
     wayland-protocols
     wayland-utils
     wl-clipboard # Clipboard
@@ -266,7 +277,6 @@
     git # Git
     alacritty # Terminal
     # kitty # Terminal
-    networkmanagerapplet # GUI for configuring network manager connections
     wget # Download from internet source
     eza # Better ls
     gh # Github cli
@@ -328,7 +338,7 @@
   # Define Aliases
   environment.shellAliases = {
     eza = "eza -lh1a";
-    rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && git commit && git push";
+    rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
   };
 
   nixpkgs.overlays = [
