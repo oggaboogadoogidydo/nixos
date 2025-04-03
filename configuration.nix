@@ -223,9 +223,6 @@
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "bobw" ];
-
-  # VMWare
-  virtualisation.vmware.host.enable = true;
   
   # Text Expander Utility : Espanso
   services.espanso.enable = true;
@@ -265,6 +262,7 @@
 
   # Browsers
     firefox
+    floorp
     tor-browser
 
   # Office Suite
@@ -312,7 +310,7 @@
     bastet
     ninvaders
     dwarf-fortress-packages.dwarf-fortress-full # Dwarf fortress - terminal edition
-    unstable.shadps4 # PS4 emulator
+    shadps4 # PS4 emulator
 
   # Apps
     ferdium # Messaging app - Out of date, Replace with my own nixpkg
