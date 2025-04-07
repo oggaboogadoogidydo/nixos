@@ -12,6 +12,9 @@
       ./hardware-configuration.nix
     ];
 
+  # Kernel Choice
+  boot.kernelPackages = pkgs.linuxPackages_hardened;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
