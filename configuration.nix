@@ -255,7 +255,7 @@
     wl-clipboard # Clipboard
     wofi # App Launcher
     hyprlock # Lock manager
-    # uwsm # auto launcher via systemd
+    uwsm # auto launcher via systemd
     # egl-wayland
     wl-kbptr
 
@@ -316,12 +316,13 @@
     shadps4 # PS4 emulator
 
   # Apps
-    ferdium # Messaging app - Out of date, Replace with my own nixpkg
+    unstable.ferdium # Messaging app - Out of date, Replace with my own nixpkg
     kicad # PCB Cad
     pwsafe # Password database
     unstable.trilium-next-desktop # trilium notes allow for more features and server
     logseq # Note Taking Application
     unstable.ollama-cuda # Local AI
+    unstable.n8n # AI automation
     blender
     unstable.freecad-wayland # CAD software
     sweethome3d.application # floor plan designer
