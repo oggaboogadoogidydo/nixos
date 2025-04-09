@@ -13,7 +13,7 @@
     ];
 
   # Kernel Choice
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -230,6 +230,14 @@
   # Text Expander Utility : Espanso
   services.espanso.enable = true;
 
+  # n8n
+  services.n8n = {
+    enable = true;
+    settings = {};
+  };
+
+
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # Allow unstable packages
@@ -285,7 +293,7 @@
     ytmdl # Download music with all attached metadata
     numbat # Very helpful math solver
     p7zip # Zip tool
-    appimage-run # Runs zen browser until packaged
+    # appimage-run # Runs zen browser until packaged
     usbtop # Monitor for USB devices
     usbutils # Easy USB device plug and play
     docker # Run docker containers
@@ -339,7 +347,7 @@
   
   # Define Aliases
   environment.shellAliases = {
-    eza = "eza -lh1a";
+    eza = "eza -1hla";
     rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
   };
 
