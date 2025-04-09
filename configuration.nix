@@ -13,7 +13,7 @@
     ];
 
   # Kernel Choice
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_6_12_hardened;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -138,14 +138,14 @@
       # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
       # Only available from driver 515.43.04+
       # Currently alpha-quality/buggy, so false is currently the recommended setting.
-      open = true;
+      open = false;
 
       # Enable the Nvidia settings menu,
 	# accessible via `nvidia-settings`.
       nvidiaSettings = true;
       
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   hardware.nvidia.prime = {
     sync.enable = true;
@@ -236,7 +236,11 @@
     settings = {};
   };
 
-
+  # ollama
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
