@@ -318,6 +318,8 @@
     jdk11 # java ll
     jdk17 # Java 17
     gcc_multi # C compiler collection for several languages
+    python311Packages.snscrape # Social network service scrapper python
+    python311Packages.pyttsx3 # Offline TTS
 
   # Games
     steam # Steam
