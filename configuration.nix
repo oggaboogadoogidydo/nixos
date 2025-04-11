@@ -318,9 +318,7 @@
     jdk11 # java ll
     jdk17 # Java 17
     gcc_multi # C compiler collection for several languages
-    python312Packages.snscrape # Social network service scrapper python
-    python312Packages.pyttsx3 # Offline TTS
-
+    
   # Games
     steam # Steam
     modrinth-app # Minecraft modpack client
