@@ -341,6 +341,7 @@
     thonny # RP IDE
     unstable.arduino-ide # Arduino IDE
     unstable.cura-appimage # 3d Printer Slicer
+    via
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
