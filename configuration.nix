@@ -332,7 +332,7 @@
     kicad # PCB Cad
     pwsafe # Password database
     unstable.trilium-next-desktop # trilium notes allow for more features and server
-    logseq # Note Taking Application
+    # unstable.logseq # Note Taking Application
     unstable.ollama-cuda # Local AI
     unstable.n8n # AI automation
     blender
@@ -345,32 +345,16 @@
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
-    "electron-27.3.11"
-    "electron-29.4.6"
     "python3.11-youtube-dl-2021.12.17"
   ];
-  
+
+  security.unprivilegedUsernsClone = true;
+
   # Define Aliases
   environment.shellAliases = {
     eza = "eza -1hla";
     rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
   };
-
-  nixpkgs.overlays = [
-    (
-      final: prev: {
-        logseq = prev.logseq.overrideAttrs (oldAttrs: {
-          postFixup = ''
-            makeWrapper ${prev.electron_27}/bin/electron $out/bin/${oldAttrs.pname} \
-              --set "LOCAL_GIT_DIRECTORY" ${prev.git} \
-              --add-flags $out/share/${oldAttrs.pname}/resources/app \
-              --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}" \
-              --prefix LD_LIBRARY_PATH : "${prev.lib.makeLibraryPath [ prev.stdenv.cc.cc.lib ]}"
-          '';
-        });
-      }
-    )
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
