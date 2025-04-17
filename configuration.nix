@@ -284,20 +284,31 @@
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
     glow # CLI MD render
-    vim # Text editor
+    ((vim_configurable.override {} ).customize {  # Text editor
+        name = "vim";
+        vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+            start = [
+	        #plugins go here
+		vim-markdown # markdown suppport
+		ale # general purpose linter
+		rust-vim # rust support and linter
+		statix # nix support and linter
+	    ]; 
+	    opt = [];
+	};
+    })
 
   # Utilities
     git # Git
     alacritty # Terminal
-    # kitty # Terminal
     wget # Download from internet source
     eza # Better ls
+    zoxide # Faster CD command with history learning -- trial run
     gh # Github cli
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
     numbat # Very helpful math solver
     p7zip # Zip tool
-    # appimage-run # Runs zen browser until packaged
     usbtop # Monitor for USB devices
     usbutils # Easy USB device plug and play
     docker # Run docker containers
@@ -315,6 +326,7 @@
   # Languages
     python3 # Python
     rustup # Rust toolchain
+    cargo-generate
     jdk11 # java ll
     jdk17 # Java 17
     gcc_multi # C compiler collection for several languages
