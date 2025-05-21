@@ -224,9 +224,13 @@
   services.blueman.enable = true;
 
   # VirtualBox
-  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableKvm = false;
+    enableHardening = true;
+  };
   users.extraGroups.vboxusers.members = [ "bobw" ];
-  
+    
   # Text Expander Utility : Espanso
   services.espanso.enable = true;
 
@@ -298,7 +302,7 @@
 	    opt = [];
 	};
     })
-
+    
   # Utilities
     git # Git
     alacritty # Terminal
