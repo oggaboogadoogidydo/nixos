@@ -226,7 +226,8 @@
   # VirtualBox
   virtualisation.virtualbox.host = {
     enable = true;
-    enableKvm = false;
+    enableKvm = true;
+    addNetworkInterface = false;
     enableHardening = true;
   };
   users.extraGroups.vboxusers.members = [ "bobw" ];
