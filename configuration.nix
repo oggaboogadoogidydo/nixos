@@ -13,7 +13,7 @@
     ];
 
   # Kernel Choice
-  boot.kernelPackages = pkgs.linuxPackages_6_12_hardened;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -289,6 +289,7 @@
   # Office Suite
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
+    notesnook
     glow # CLI MD render
     ((vim_configurable.override {} ).customize {  # Text editor
         name = "vim";
@@ -339,7 +340,7 @@
     
   # Games
     steam # Steam
-    modrinth-app # Minecraft modpack client
+    #modrinth-app # Minecraft modpack client
     bastet
     ninvaders
     dwarf-fortress-packages.dwarf-fortress-full # Dwarf fortress - terminal edition
@@ -350,7 +351,7 @@
     kicad # PCB Cad
     pwsafe # Password database
     unstable.trilium-next-desktop # trilium notes allow for more features and server
-    # unstable.logseq # Note Taking Application
+    unstable.logseq # Note Taking Application
     unstable.ollama-cuda # Local AI
     unstable.n8n # AI automation
     blender
@@ -364,6 +365,7 @@
 
   nixpkgs.config.permittedInsecurePackages = [
     "python3.11-youtube-dl-2021.12.17"
+    "electron-27.3.11"
   ];
 
   security.unprivilegedUsernsClone = true;
