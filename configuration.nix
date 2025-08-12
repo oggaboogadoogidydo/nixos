@@ -59,7 +59,7 @@
   users.users.bobw = {
     isNormalUser = true;
     description = "BobW";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input"  ];
     packages = with pkgs; [];
   };
 
@@ -248,6 +248,8 @@
     acceleration = "cuda";
   };
 
+  environment.variables = { EDITOR = "vim"; };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # Allow unstable packages
@@ -289,21 +291,24 @@
   # Office Suite
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
-    notesnook
+    
     glow # CLI MD render
-    ((vim_configurable.override {} ).customize {  # Text editor
-        name = "vim";
-        vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-            start = [
-	        #plugins go here
-		vim-markdown # markdown suppport
-		ale # general purpose linter
-		rust-vim # rust support and linter
-		statix # nix support and linter
-	    ]; 
-	    opt = [];
-	};
-    })
+    ((vim_configurable.override {  }).customize{
+      name = "vim";
+      # Install plugins for example for syntax highlighting of nix files
+      vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+        start = [ vim-nix ];
+        opt = [];
+      };
+      vimrcConfig.customRC = ''
+        set tabstop=8 softtabstop=0
+        set shiftwidth=4 smarttab
+	set expandtab
+
+	syntax on
+      '';
+      }
+    )
     
   # Utilities
     git # Git
@@ -340,7 +345,7 @@
     
   # Games
     steam # Steam
-    #modrinth-app # Minecraft modpack client
+    unstable.modrinth-app # Minecraft modpack client
     bastet
     ninvaders
     dwarf-fortress-packages.dwarf-fortress-full # Dwarf fortress - terminal edition
