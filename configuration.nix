@@ -291,13 +291,20 @@
   # Office Suite
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
-    
+    nb # notes taker maybe
     glow # CLI MD render
     ((vim_configurable.override {  }).customize{
       name = "vim";
       # Install plugins for example for syntax highlighting of nix files
       vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-        start = [ vim-nix ];
+        start = [ vim-nix
+                  vim-markdown
+                  rust-vim
+                  syntastic
+                  YouCompleteMe
+                  vim-polyglot
+                  ale
+                 ];
         opt = [];
       };
       vimrcConfig.customRC = ''
