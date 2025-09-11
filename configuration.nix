@@ -172,7 +172,7 @@
     withUWSM = true;
     xwayland.enable = true;
   };
-  
+
   # Hint Electron apps to use wayland
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
@@ -286,13 +286,10 @@
   # Browsers
     firefox
     floorp
-    tor-browser
 
   # Office Suite
     libreoffice-qt-fresh # Office Suite
     unstable.dropbox # Dropbox Client - Unsure if works
-    nb # notes taker maybe
-    glow # CLI MD render
     ((vim_configurable.override {  }).customize{
       name = "vim";
       # Install plugins for example for syntax highlighting of nix files
@@ -310,9 +307,9 @@
       vimrcConfig.customRC = ''
         set tabstop=8 softtabstop=0
         set shiftwidth=4 smarttab
-	set expandtab
+      	set expandtab
 
-	syntax on
+      	syntax on
       '';
       }
     )
@@ -322,14 +319,13 @@
     alacritty # Terminal
     wget # Download from internet source
     eza # Better ls
-    zoxide # Faster CD command with history learning -- trial run
+    run
     gh # Github cli
     ani-cli # Watch Anime from cli
     ytmdl # Download music with all attached metadata
     numbat # Very helpful math solver
     p7zip # Zip tool
     usbtop # Monitor for USB devices
-    usbutils # Easy USB device plug and play
     docker # Run docker containers
     nvidia-container-toolkit # pass docker containers the gpu
     zenith-nvidia # startup show all computer processes
@@ -360,10 +356,8 @@
 
   # Apps
     unstable.ferdium # Messaging app - Out of date, Replace with my own nixpkg
-    kicad # PCB Cad
-    pwsafe # Password database
-    unstable.trilium-next-desktop # trilium notes allow for more features and server
-    unstable.logseq # Note Taking Application
+    pidgin # Messaging app, everything except for instagram. Replace ferdium eventually. 
+    kicad # PCB Cad design software
     unstable.ollama-cuda # Local AI
     unstable.n8n # AI automation
     blender
