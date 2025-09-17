@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -239,8 +239,9 @@
   services.n8n = {
     enable = true;
     openFirewall = true;
-    settings = {};
+    settings = {N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;};
   };
+  systemd.services.n8n.serviceConfig.ProtectHome = lib.mkForce "read-write";
 
   # ollama
   services.ollama = {
