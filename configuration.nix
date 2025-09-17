@@ -241,7 +241,18 @@
     openFirewall = true;
     settings = {N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;};
   };
-  systemd.services.n8n.serviceConfig.ProtectHome = lib.mkForce "read-write";
+  systemd.services.n8n = {
+    serviceConfig = {
+      ReadWritePaths = [
+        "/home/bobw"
+      ];
+
+     # ProtectHome = false;
+
+      User = "n8n";
+      Group = "n8n";
+    };
+  };
 
   # ollama
   services.ollama = {
