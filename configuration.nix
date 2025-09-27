@@ -188,7 +188,7 @@
     ];
   };
 
-  systemd.services.start-hyprland = {
+  systemd.user.services.start-hyprland = {
     description = "Start hyprland on startup";
     wantedBy = [ "graphical-session.target" ];
     after = [ "graphical-session-pre.target" ];
@@ -337,6 +337,8 @@
       '';
       }
     )
+    sage
+    
     
   # Utilities
     git # Git
