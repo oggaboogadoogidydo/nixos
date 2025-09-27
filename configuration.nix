@@ -188,6 +188,18 @@
     ];
   };
 
+  systemd.services.start-hyprland = {
+    description = "Start hyprland on startup";
+    wantedBy = [ "graphical-session.target" ];
+    after = [ "graphical-session-pre.target" ];
+    serviceConfig = {
+      Type = "exec";
+      ExecStart = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
+      Restart = "on-failure";
+      RestartSec = 1;
+    };
+  };
+  
   # Sound
   security.rtkit.enable = true;
   services.pipewire = {
