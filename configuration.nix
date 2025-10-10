@@ -13,13 +13,17 @@
     ];
 
   # Kernel Choice
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_16;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-5bdceca8-e2db-4e79-9224-d7d71bba9966".device = "/dev/disk/by-uuid/5bdceca8-e2db-4e79-9224-d7d71bba9966";
+  boot.initrd.luks.devices."luks-95192317-faaa-4d77-96ac-7246f4a939f0".device = "/dev/disk/by-uuid/95192317-faaa-4d77-96ac-7246f4a939f0";
+
+  # Enable ACL in filesystems
+  fileSystems."/".options = [ "defaults" "acl" ];
+
   networking.hostName = "deckard"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -59,7 +63,7 @@
   users.users.bobw = {
     isNormalUser = true;
     description = "BobW";
-    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input"  ];
+    extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input" "fileshare"  ];
     packages = with pkgs; [];
   };
 
@@ -188,17 +192,12 @@
     ];
   };
 
-  systemd.user.services.start-hyprland = {
-    description = "Start hyprland on startup";
-    wantedBy = [ "graphical-session.target" ];
-    after = [ "graphical-session-pre.target" ];
-    serviceConfig = {
-      Type = "exec";
-      ExecStart = "${pkgs.uwsm}/bin/uwsm start hyprland-uwsm.desktop";
-      Restart = "on-failure";
-      RestartSec = 1;
-    };
-  };
+  # Auto start hyprland on login
+  environment.loginShellInit = ''
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      exec uwsm start hyprland-uwsm.desktop
+    fi
+  '';
   
   # Sound
   security.rtkit.enable = true;
@@ -248,22 +247,49 @@
   services.espanso.enable = true;
 
   # n8n
+  # n8n user and group
+  users.users.n8n = {
+    isSystemUser = true;
+    group = "n8n";
+    home = "/var/lib/n8n";
+    createHome = true;
+    homeMode = "755";
+    extraGroups = [ "fileshare" ];
+  };
+  users.groups.n8n = {};
+
+  # Shared access group
+  users.groups.fileshare = {};
+
+  # Set premissions for n8n directory
+  system.activationScripts.n8n-setup = ''
+    mkdir -p /var/lib/n8n/{data,workflows,.n8n}
+    chown -R n8n:n8n /var/lib/n8n
+    chmod -R 755 /var/lib/n8n
+  '';
+
+  # Set shared file premissions 
+  systemd.tmpfiles.rules = [
+    # n8n service directories
+    "d /var/lib/n8n 0755 n8n n8n - -"
+    "d /var/lib/n8n/data 0755 n8n n8n - -"
+    "d /var/lib/n8n/workflows 0755 n8n n8n - -"
+    "d /var/lib/n8n/.n8n 0755 n8n n8n - -"
+
+    # Set premissions for existing directories
+    "a+ /home/bobw/Documents/Archive - - - - d:g:fileshare:rwx"
+    "a+ /home/bobw/Documents/Notes - - - - d:g:fileshare:rwx"
+
+    "a+ /home/bobw/Downloads - - - - d:f:fileshare:rwx"
+
+  ];
+
+  # Enable the service
   services.n8n = {
     enable = true;
     openFirewall = true;
+    webhookUrl = "http://localhost:5678";
     settings = {N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;};
-  };
-  systemd.services.n8n = {
-    serviceConfig = {
-      ReadWritePaths = [
-        "/home/bobw"
-      ];
-
-     # ProtectHome = false;
-
-      User = "n8n";
-      Group = "n8n";
-    };
   };
 
   # ollama
@@ -393,6 +419,9 @@
     unstable.arduino-ide # Arduino IDE
     unstable.cura-appimage # 3d Printer Slicer
     via
+
+  # Enable ACL package for advanced file access control
+    acl
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -404,7 +433,7 @@
 
   # Define Aliases
   environment.shellAliases = {
-    eza = "eza -1hla";
+    eza = "eza -1 -h -l -a -T";
     rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
   };
 
