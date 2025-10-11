@@ -152,11 +152,15 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
   hardware.nvidia.prime = {
-    sync.enable = true;
+    offload.enable = true;
 
+    offload.enableOffloadCmd = true;
+    
     amdgpuBusId = "PCI:9:0:0";
     nvidiaBusId = "PCI:1:0:0";
   };
+
+
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
 
   #specialisation = {
@@ -195,7 +199,7 @@
   # Auto start hyprland on login
   environment.loginShellInit = ''
     if [ "$(tty)" = "/dev/tty1" ]; then
-      exec uwsm start hyprland-uwsm.desktop
+      exec nvidia-offload uwsm start hyprland-uwsm.desktop
     fi
   '';
   
@@ -433,7 +437,7 @@
 
   # Define Aliases
   environment.shellAliases = {
-    eza = "eza -1 -h -l -a -T";
+    eza = "eza --sort=Name --group-directories-first -1 --long --smart-group --header --time=modified --time-style=full-iso --total-size --git --classify=always --dereference --color=auto --icons=auto --tree --level=2";
     rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
   };
 
