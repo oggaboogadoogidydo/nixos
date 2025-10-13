@@ -160,20 +160,6 @@
     nvidiaBusId = "PCI:1:0:0";
   };
 
-
-  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
-
-  #specialisation = {
-  #  on-the-go.configuration = {
-  #    system.nixos.tags = [ "on-the-go" ];
-  #    hardware.nvidia = {
-  #      prime.offload.enable = lib.mkForce true;
-  #      prime.offload.enableOffloadCmd = lib.mkForce true;
-  #      prime.sync.enable = lib.mkForce false;
-  #    };
-  #  };
-  #};
-
   # Hyprland config
   programs.hyprland = {
     enable = true;
@@ -292,7 +278,7 @@
   services.n8n = {
     enable = true;
     openFirewall = true;
-    webhookUrl = "http://localhost:5678";
+    # webhookUrl = "http://localhost:5678";
     settings = {N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;};
   };
 
@@ -412,7 +398,6 @@
 
   # Apps
     unstable.ferdium # Messaging app - Out of date, Replace with my own nixpkg
-    pidgin # Messaging app, everything except for instagram. Replace ferdium eventually. 
     kicad # PCB Cad design software
     unstable.ollama-cuda # Local AI
     unstable.n8n # AI automation
@@ -455,10 +440,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ 5678 ];
+  # networking.firewall.allowedUDPPorts = [ 5678 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = true;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
