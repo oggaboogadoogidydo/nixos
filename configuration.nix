@@ -172,6 +172,20 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  # Warpd overlay
+  nixpkgs.overlays = [
+    (self: super: {
+      warpd = (super.warpd.overrideAttrs (old: {
+        src = super.fetchFromGitHub {
+          owner = "rvaiya";
+          repo = "warpd";
+          rev = "01650eabf70846deed057a77ada3c0bbb6d97d6e"; # Use the latest commit if a newer one exists
+          sha256 = "sha256-61+kJvOi4oog0+tGucc1rWemdx2vp15wlluJE+1PzTs=";
+        };
+      })).override { withX = false; };
+    })
+  ];
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
@@ -322,8 +336,8 @@
     unstable.anyrun # App Launcher
     uwsm # auto launcher via systemd
     # egl-wayland
-    wl-kbptr
-    warpd
+    # wl-kbptr # keyboard mouse
+    warpd # Keyboard mouse
 
   # Sound
     pavucontrol # GUI Sound control
