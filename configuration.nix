@@ -279,7 +279,13 @@
     enable = true;
     openFirewall = true;
     # webhookUrl = "http://localhost:5678";
-    settings = {N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;};
+    settings = {
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true;
+      N8N_HIRING_BANNER_ENABLED=false;
+      N8N_HIDE_USAGE_PAGE=true;
+      N8N_DISABLED_MODULES="insights";
+      N8N_ONBOARDING_FLOW_DISABLED=true;
+    };
   };
 
   # ollama
@@ -313,16 +319,17 @@
     wayland-protocols
     wayland-utils
     wl-clipboard # Clipboard
-    wofi # App Launcher
-    hyprlock # Lock manager
+    unstable.anyrun # App Launcher
     uwsm # auto launcher via systemd
     # egl-wayland
     wl-kbptr
+    warpd
 
   # Sound
     pavucontrol # GUI Sound control
     pipewire # Sound application
-
+    easyeffects # Sound control trial run
+    
   # Browsers
     firefox
     floorp
