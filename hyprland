@@ -276,6 +276,11 @@
       powerOnBoot = true;
     };
     
+    # Enable Opengl - required for many graphics applications
+    opengl = {
+      enable = true;
+      driSupport32Bit = true;  # Required for 32-bit applications (like some Steam games)
+    };
   };
 
   # ==========================================================================
@@ -371,7 +376,7 @@
 
     loginShellInit = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
-        execonce nvidia-offload uwsm start hyprland-uwsm.desktop
+        exec nvidia-offload uwsm start hyprland-uwsm.desktop
       fi
     '';
 
@@ -440,7 +445,7 @@
       blender unstable.freecad-wayland
       sweethome3d.application
       thonny unstable.arduino-ide
-      unstable.cura-appimage
+      unstable.cura-appimage via
 
       # === Hardware Drivers ===
       unstable.spacenavd unstable.spacenav-cube-example
