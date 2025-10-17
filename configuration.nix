@@ -241,11 +241,9 @@
     # Text expansion
     espanso = {
       enable = true;
-      package = pkgs.espanso-wayland;
     };
-    
-    # Local AI service
-    ollama = {
+
+   ollama = { 
       enable = true;
       acceleration = "cuda";
     };
@@ -377,11 +375,11 @@
       rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
     };
 
-    loginShellInit = ''
-      if [ "$(tty)" = "/dev/tty1" ]; then
-        exec nvidia-offload uwsm start hyprland.desktop
-      fi
-    '';
+#    loginShellInit = ''
+#      if [ "$(tty)" = "/dev/tty1" ]; then
+#        exec nvidia-offload uwsm start hyprland.desktop
+#      fi
+#    '';
 
     # ==========================================================================
     # System Packages
@@ -405,7 +403,7 @@
         nvidia-container-toolkit
         zenith-nvidia 
         sniffnet
-        espanso-wayland
+        unstable.espanso-wayland
 
       # === Development Environments ===
         python3 
