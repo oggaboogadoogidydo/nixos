@@ -82,6 +82,7 @@
       layout = "us";
       variant = "";
     };
+    displayManager.lightdm.enable = false;
   };
 
   # ==========================================================================
@@ -191,9 +192,11 @@
     n8n = {
       enable = true;
       openFirewall = true;
+      webhookUrl = "http://localhost:5678";
       settings = {
         DB_TYPE = "sqlite";
         DB_SQLITE_VACUUM_ON_STARTUP = "true";
+        DB_SQLITE_POOL_SIZE = "20";
         N8N_USER_FOLDER = "/var/lib/n8n/data";
         N8N_WORKFLOWS_DIR = "/var/lib/n8n/workflows";
         N8N_CUSTOM_EXTENSIONS = "/var/lib/n8n/custom-extensions";
@@ -215,6 +218,8 @@
         N8N_HOST = "localhost";
         N8N_PORT = "5678";
         N8N_PROTOCOL = "http";
+        N8N_RUNNERS_ENABLED = "true";
+        N8N_BLOCK_ENV_ACCESS_IN_NODE = "true";
       };
     };
 
@@ -234,7 +239,10 @@
     blueman.enable = true;
     
     # Text expansion
-    espanso.enable = true;
+    espanso = {
+      enable = true;
+      package = pkgs.espanso-wayland;
+    };
     
     # Local AI service
     ollama = {
@@ -371,7 +379,7 @@
 
     loginShellInit = ''
       if [ "$(tty)" = "/dev/tty1" ]; then
-        execonce nvidia-offload uwsm start hyprland-uwsm.desktop
+        exec nvidia-offload uwsm start hyprland.desktop
       fi
     '';
 
@@ -382,18 +390,30 @@
       unstable = import <unstable> { config.allowUnfree = true; };
     in [
       # === System Utilities ===
-      asusctl supergfxctl
-      pipewire easyeffects
-      acl
-      git wget eza gh
-      p7zip usbtop
-      docker nvidia-container-toolkit
-      zenith-nvidia sniffnet
-      espanso-wayland
+        asusctl 
+        supergfxctl
+        pipewire 
+        easyeffects
+        acl
+        git 
+        wget 
+        eza 
+        gh
+        p7zip 
+        usbtop
+        docker 
+        nvidia-container-toolkit
+        zenith-nvidia 
+        sniffnet
+        espanso-wayland
 
       # === Development Environments ===
-      python3 rustup cargo-generate gcc_multi
-      jdk11 jdk17
+        python3 
+        rustup 
+        cargo-generate 
+        gcc_multi
+        jdk11 
+        jdk17
       
       # === Custom Vim Configuration ===
       (vim_configurable.customize {
@@ -418,33 +438,46 @@
       })
 
       # === Wayland & Graphics ===
-      xwayland wayland-protocols wayland-utils
-      wl-clipboard
-      unstable.anyrun uwsm
+        xwayland 
+        wayland-protocols 
+        wayland-utils
+        wl-clipboard
+        unstable.anyrun 
+        uwsm
 
       # === Applications ===
-      firefox floorp
-      libreoffice-qt-fresh alacritty
-      ani-cli ytmdl numbat
+        firefox 
+        floorp
+        libreoffice-qt-fresh 
+        alacritty
+        ani-cli 
+        ytmdl 
+        numbat
       
       # === Games ===
-      unstable.modrinth-app
-      bastet ninvaders
-      dwarf-fortress-packages.dwarf-fortress-full
-      shadps4
+        unstable.modrinth-app
+        bastet 
+        ninvaders
+        dwarf-fortress-packages.dwarf-fortress-full
+        shadps4
 
       # === Productivity & Creative ===
-      unstable.ferdium
-      kicad
-      unstable.ollama-cuda unstable.n8n
-      blender unstable.freecad-wayland
-      sweethome3d.application
-      thonny unstable.arduino-ide
-      unstable.cura-appimage
+        unstable.ferdium
+        kicad
+        unstable.ollama-cuda 
+        unstable.n8n
+        blender 
+        unstable.freecad-wayland
+        sweethome3d.application
+        thonny 
+        unstable.arduino-ide
+        unstable.cura-appimage
 
       # === Hardware Drivers ===
-      unstable.spacenavd unstable.spacenav-cube-example
-      unstable.spnavcfg unstable.libspnav
+        unstable.spacenavd 
+        unstable.spacenav-cube-example
+        unstable.spnavcfg 
+        unstable.libspnav
     ];
   };
 
