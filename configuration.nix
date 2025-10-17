@@ -163,16 +163,16 @@
   # ==========================================================================
   # Hardware Services
   # ==========================================================================
-  services = {
+  
     # ASUS ROG control services
-    asusd = {
+  services.asusd = {
       enable = true;
       enableUserService = true;
     };
-    supergfxd.enable = true;
+  services.supergfxd.enable = true;
 
     # Advanced power management
-    tlp = {
+  services.tlp = {
       enable = true;
       settings = {
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
@@ -189,7 +189,7 @@
     };
 
     # n8n Automation Service
-    n8n = {
+  services.n8n = {
       enable = true;
       openFirewall = true;
       webhookUrl = "http://localhost:5678";
@@ -224,7 +224,7 @@
     };
 
     # SSH server
-    openssh = {
+  services.openssh = {
       enable = true;
       startWhenNeeded = true;
       settings = {
@@ -236,21 +236,20 @@
     };
 
     # Bluetooth
-    blueman.enable = true;
+  services.blueman.enable = true;
     
     # Text expansion
-    espanso = {
+  services.espanso = {
       enable = true;
     };
 
-   ollama = { 
+  services.ollama = { 
       enable = true;
       acceleration = "cuda";
     };
 
     # D-Bus message bus
-    dbus.enable = true;
-  };
+  services.dbus.enable = true;
 
   # ==========================================================================
   # Hardware Configuration
