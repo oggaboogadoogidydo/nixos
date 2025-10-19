@@ -15,6 +15,7 @@
     kernelPackages = pkgs.linuxPackages_6_16;
     kernelParams = [ 
       "page_alloc.shuffle=1"  # Security: Randomizes page allocator for ASLR
+      "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot. 
     ];
     loader = {
       systemd-boot = {
@@ -194,9 +195,9 @@
       openFirewall = true;
       webhookUrl = "http://localhost:5678";
       settings = {
-        DB_TYPE = "sqlite";
-        DB_SQLITE_VACUUM_ON_STARTUP = "true";
-        DB_SQLITE_POOL_SIZE = "20";
+        # DB_TYPE = "sqlite";
+        # DB_SQLITE_VACUUM_ON_STARTUP = "true";
+        # DB_SQLITE_POOL_SIZE = "20";
         N8N_USER_FOLDER = "/var/lib/n8n/data";
         N8N_WORKFLOWS_DIR = "/var/lib/n8n/workflows";
         N8N_CUSTOM_EXTENSIONS = "/var/lib/n8n/custom-extensions";
