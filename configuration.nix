@@ -122,20 +122,6 @@
     extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input" "fileshare" ];
   };
 
-  users.users.n8n = {
-    isSystemUser = true;
-    group = "n8n";
-    home = "/var/lib/n8n";
-    createHome = true;
-    homeMode = "755";
-    extraGroups = [ "fileshare" ];
-  };
-  
-  users.groups = {
-    n8n = {};
-    fileshare = {};
-  };
-
   # ==========================================================================
   # Filesystem Configuration
   # ==========================================================================
@@ -189,40 +175,11 @@
       };
     };
 
-    # n8n Automation Service
   services.n8n = {
-      enable = true;
-      openFirewall = true;
-      webhookUrl = "http://localhost:5678";
-      settings = {
-        # DB_TYPE = "sqlite";
-        # DB_SQLITE_VACUUM_ON_STARTUP = "true";
-        # DB_SQLITE_POOL_SIZE = "20";
-        N8N_USER_FOLDER = "/var/lib/n8n/data";
-        N8N_WORKFLOWS_DIR = "/var/lib/n8n/workflows";
-        N8N_CUSTOM_EXTENSIONS = "/var/lib/n8n/custom-extensions";
-        N8N_CONFIG_FILES = "/var/lib/n8n/.n8n/config";
-        N8N_DATA_TRANSFER_MAX_SIZE = "16MB";
-        N8N_ENCRYPTION_KEY = "file:/var/lib/n8n/.n8n/encryption-key";
-        N8N_DIAGNOSTICS_ENABLED = "false";
-        N8N_PERSONALIZATION_ENABLED = "false";
-        N8N_HIRING_BANNER_ENABLED = "false";
-        N8N_HIDE_USAGE_PAGE = "true";
-        N8N_DISABLED_MODULES = "insights";
-        N8N_ONBOARDING_FLOW_DISABLED = "true";
-        N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true";
-        EXECUTIONS_DATA_SAVE_MANUAL_EXECUTIONS = "true";
-        EXECUTIONS_DATA_SAVE_ON_ERROR = "all";
-        EXECUTIONS_DATA_SAVE_ON_SUCCESS = "all";
-        EXECUTIONS_DATA_SAVE_ON_PROGRESS = "false";
-        WEBHOOK_URL = "http://localhost:5678";
-        N8N_HOST = "localhost";
-        N8N_PORT = "5678";
-        N8N_PROTOCOL = "http";
-        N8N_RUNNERS_ENABLED = "true";
-        N8N_BLOCK_ENV_ACCESS_IN_NODE = "true";
-      };
-    };
+    enable = true;
+    openFirewall = true;
+    settings = {};
+  };
 
     # SSH server
   services.openssh = {
@@ -375,12 +332,6 @@
       rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
     };
 
-#    loginShellInit = ''
-#      if [ "$(tty)" = "/dev/tty1" ]; then
-#        exec nvidia-offload uwsm start hyprland.desktop
-#      fi
-#    '';
-
     # ==========================================================================
     # System Packages
     # ==========================================================================
@@ -482,20 +433,7 @@
   # ==========================================================================
   # Directory & Permission Management
   # ==========================================================================
-  systemd.tmpfiles.rules = [
-    # n8n service directories
-    "d /var/lib/n8n 0755 n8n n8n - -"
-    "d /var/lib/n8n/.n8n 0755 n8n n8n - -"
-    "d /var/lib/n8n/data 0755 n8n n8n - -"
-    "d /var/lib/n8n/workflows 0755 n8n n8n - -"
-    "d /var/lib/n8n/certs 0755 n8n n8n - -"
-    "d /var/lib/n8n/custom-extensions 0755 n8n n8n - -"
-
-    # Shared directories
-    "a+ /home/bobw/Documents/Archive - - - - d:g:fileshare:rwx"
-    "a+ /home/bobw/Documents/Notes - - - - d:g:fileshare:rwx"
-    "a+ /home/bobw/Downloads - - - - d:f:fileshare:rwx"
-  ];
+  systemd.tmpfiles.rules = [];
 
   # ==========================================================================
   # Insecure Package Exceptions
