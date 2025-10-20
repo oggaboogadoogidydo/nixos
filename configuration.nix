@@ -122,8 +122,16 @@
     extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input" "fileshare" ];
   };
 
-  users.groups = { fileshare = {}; };
+  users.groups = { 
+    fileshare = {};
+    n8n = {};
+  };
 
+  users.users.n8n = {
+    isSystemUser = true;
+    group = "n8n";
+    extraGroups = [ "fileshare" ];
+  };
   # ==========================================================================
   # Filesystem Configuration
   # ==========================================================================
@@ -443,8 +451,12 @@
   # Directory & Permission Management
   # ==========================================================================
   systemd.tmpfiles.rules = [
-    "Z+ /home/bobw/Documents/Notes/ 0750 bobw fileshare - -"
-    "Z+ /home/bobw/Documents/Notes/* 0750 bobw fileshare - -"
+    # "Z+ /home/bobw/Documents/Notes/ 0750 bobw fileshare - -"
+    # "Z+ /home/bobw/Documents/Notes/* 0750 bobw fileshare - -"
+
+    "d /home/bobw/Documents 0750 bobw fileshare - -"
+    "d /home/bobw/Documents/Notes 0770 bobw fileshare - -"
+    "Z /home/bobw/Documents/Notes 0770 bobw fileshare - -"
   ];
 
 #  systemd.tmpfiles.settings = {
