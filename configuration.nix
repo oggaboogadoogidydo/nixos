@@ -122,6 +122,8 @@
     extraGroups = [ "networkmanager" "wheel" "vboxusers" "dialout" "input" "fileshare" ];
   };
 
+  users.groups = { fileshare = {}; };
+
   # ==========================================================================
   # Filesystem Configuration
   # ==========================================================================
@@ -178,7 +180,14 @@
   services.n8n = {
     enable = true;
     openFirewall = true;
-    settings = {};
+    settings = {
+      
+    };
+  };
+
+  systemd.services.n8n.serviceConfig = {
+    User = "n8n";
+    Group = "fileshare";
   };
 
     # SSH server
@@ -433,7 +442,24 @@
   # ==========================================================================
   # Directory & Permission Management
   # ==========================================================================
-  systemd.tmpfiles.rules = [];
+  systemd.tmpfiles.rules = [
+    "Z+ /home/bobw/Documents/Notes/ 0750 bobw fileshare - -"
+    "Z+ /home/bobw/Documents/Notes/* 0750 bobw fileshare - -"
+  ];
+
+#  systemd.tmpfiles.settings = {
+#    # Define ACLs for your project directory
+#    "10-n8n-Notes-Access" = {
+#      "/home/bobw/Documents/Notes".d = {
+#        mode = "0750";
+#        group = "fileshare";
+#        acl = [
+#          "g:fileshare:rwX"
+#          "d:g:fileshare:rwX"
+#        ];
+#      };
+#    };
+#  };
 
   # ==========================================================================
   # Insecure Package Exceptions
