@@ -348,6 +348,7 @@
     shellAliases = {
       eza = "eza --sort=Name --group-directories-first -1 --long --smart-group --header --time=modified --time-style=full-iso --total-size --git --classify=always --dereference --color=auto --icons=auto --tree --level=2";
       rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
+      startWM = "hyprland & sleep 1 & kill %1 & nvidia-offload uwsm start hyprland.desktop";
     };
 
     # ==========================================================================
@@ -452,8 +453,6 @@
   # Directory & Permission Management
   # ==========================================================================
   systemd.tmpfiles.rules = [
-    # "Z+ /home/bobw/Documents/Notes/ 0750 bobw fileshare - -"
-    # "Z+ /home/bobw/Documents/Notes/* 0750 bobw fileshare - -"
 
     "d /home/bobw/ 0750 bobw fileshare - -"
     "d /home/bobw/ 0770 bobw fileshare - -"
