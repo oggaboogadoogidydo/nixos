@@ -129,8 +129,8 @@
 
   users.users.n8n = {
     isSystemUser = true;
-    group = "n8n";
-    extraGroups = [ "fileshare" ];
+    group = "fileshare";
+    extraGroups = [ "n8n" "fileshare" ];
   };
   # ==========================================================================
   # Filesystem Configuration
@@ -196,6 +196,7 @@
   systemd.services.n8n.serviceConfig = {
     User = "n8n";
     Group = "fileshare";
+    Environment = [ "GIT_CONFIG_GLOBAL=/etc/gitconfig-for-n8n" ];
   };
 
     # SSH server
@@ -454,24 +455,18 @@
     # "Z+ /home/bobw/Documents/Notes/ 0750 bobw fileshare - -"
     # "Z+ /home/bobw/Documents/Notes/* 0750 bobw fileshare - -"
 
-    "d /home/bobw/Documents 0750 bobw fileshare - -"
-    "d /home/bobw/Documents/Notes 0770 bobw fileshare - -"
-    "Z /home/bobw/Documents/Notes 0770 bobw fileshare - -"
+    "d /home/bobw/ 0750 bobw fileshare - -"
+    "d /home/bobw/ 0770 bobw fileshare - -"
+    "Z /home/bobw/ 0770 bobw fileshare - -"
   ];
 
-#  systemd.tmpfiles.settings = {
-#    # Define ACLs for your project directory
-#    "10-n8n-Notes-Access" = {
-#      "/home/bobw/Documents/Notes".d = {
-#        mode = "0750";
-#        group = "fileshare";
-#        acl = [
-#          "g:fileshare:rwX"
-#          "d:g:fileshare:rwX"
-#        ];
-#      };
-#    };
-#  };
+  environment.etc."gitconfig-for-n8n".text = ''
+    [safe]
+      directory = /home/bobw/Documents/Notes
+      directory = /home/bobw/Documents/Archive
+      directory = /home/bobw/Documents/Library
+      directory = /home/bobw/Documents/Projects
+  '';
 
   # ==========================================================================
   # Insecure Package Exceptions
