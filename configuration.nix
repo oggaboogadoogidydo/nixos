@@ -452,12 +452,12 @@
   # ==========================================================================
   # Directory & Permission Management
   # ==========================================================================
-  systemd.tmpfiles.rules = [
-
-    "d /home/bobw/ 0750 bobw fileshare - -"
-    "d /home/bobw/ 0770 bobw fileshare - -"
-    "Z /home/bobw/ 0770 bobw fileshare - -"
-  ];
+#  systemd.tmpfiles.rules = [
+#
+#    "d /home/bobw/ 0750 bobw fileshare - -"
+#    "d /home/bobw/ 0770 bobw fileshare - -"
+#    "Z /home/bobw/ 0770 bobw fileshare - -"
+#  ];
 
   environment.etc."gitconfig-for-n8n".text = ''
     [safe]
