@@ -12,7 +12,7 @@
   # Boot Configuration
   # ==========================================================================
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_16;
+    kernelPackages = pkgs.linuxPackages_6_17;
     kernelParams = [ 
       "page_alloc.shuffle=1"  # Security: Randomizes page allocator for ASLR
       "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot. 
@@ -215,9 +215,9 @@
   services.blueman.enable = true;
     
     # Text expansion
-  services.espanso = {
-      enable = true;
-    };
+  # services.espanso = {
+  #     enable = true;
+  #   };
 
   services.ollama = { 
       enable = true;
@@ -290,12 +290,18 @@
       autoStart = true;
     };
     
-    # Hyprland Wayland compositor
-    hyprland = {
+ #   # Hyprland Wayland compositor
+ #   hyprland = {
+ #     enable = true;
+ #     xwayland.enable = true;
+ #   };
+
+    # SWAY Wayland compositor
+    sway = {
       enable = true;
-      xwayland.enable = true;
+      wrapperFeatures.gtk = true;
     };
-    
+
     # Bash configuration
     bash = {
       enableLsColors = true;  # Enable colors for ls
@@ -349,7 +355,6 @@
       eza = "eza --sort=Name --group-directories-first -1 --long --smart-group --header --time=modified --time-style=full-iso --total-size --git --classify=always --dereference --color=auto --icons=auto --tree --level=2";
       rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
       startWM = "nvidia-offload uwsm start hyprland.desktop";
-      freecad = "QT_QPA_PLATFORM=xcb freecad";
     };
 
     # ==========================================================================
@@ -453,19 +458,28 @@
   nixpkgs.overlays = [
     (final: prev: {
       # Your package overrides go here
-      # freecad = prev.freecad.override { ... };
+      freecad = prev.freecad.overrideAttrs (oldAttrs: {
+        # The wrapProgram command is provided by makeWrapper
+        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [ final.makeWrapper ];
+        # Create a wrapper script that sets the environment variable before launching FreeCAD
+        postInstall = (oldAttrs.postInstall or "") + ''
+          wrapProgram "$out/bin/FreeCAD" --set QT_QPA_PLATFORM xcb
+        '';
+      });
     })
   ];
 
   # ==========================================================================
   # Directory & Permission Management
   # ==========================================================================
-#  systemd.tmpfiles.rules = [
-#
-#    "d /home/bobw/ 0750 bobw fileshare - -"
-#    "d /home/bobw/ 0770 bobw fileshare - -"
-#    "Z /home/bobw/ 0770 bobw fileshare - -"
-#  ];
+  systemd.tmpfiles.rules = [
+
+    "d /home/bobw/ 0750 bobw fileshare - -"
+    "d /home/bobw/ 0770 bobw fileshare - -"
+    "Z /home/bobw/ 0770 bobw fileshare - -"
+
+    "f  /home/bobw/.ssh/id_ed25519 0600 bobw fileshare -"
+  ];
 
   environment.etc."gitconfig-for-n8n".text = ''
     [safe]
