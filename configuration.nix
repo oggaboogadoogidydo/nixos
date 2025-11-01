@@ -215,9 +215,9 @@
   services.blueman.enable = true;
     
     # Text expansion
-  # services.espanso = {
-  #     enable = true;
-  #   };
+  services.espanso = {
+      enable = true;
+    };
 
   services.ollama = { 
       enable = true;
@@ -290,16 +290,10 @@
       autoStart = true;
     };
     
- #   # Hyprland Wayland compositor
- #   hyprland = {
- #     enable = true;
- #     xwayland.enable = true;
- #   };
-
-    # SWAY Wayland compositor
-    sway = {
+    # Hyprland Wayland compositor
+    hyprland = {
       enable = true;
-      wrapperFeatures.gtk = true;
+      xwayland.enable = true;
     };
 
     # Bash configuration
