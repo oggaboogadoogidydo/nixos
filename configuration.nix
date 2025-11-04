@@ -453,23 +453,11 @@
             let g:auto_save_no_updatetime = 1
             let g:auto_save_in_insert_mode = 1
             
-            " STATUS LINE ------------------------------------------------------------ {{{
-
-            " Clear status line when vimrc is reloaded.
-            set statusline=
-
-            " Status line left side.
+            set statusline= 
             set statusline+=\ %F\ %M\ %Y\ %R
-
-            " Use a divider to separate the left side from the right side.
             set statusline+=%=
-
-            " Status line right side.
-            "set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%
-            
-            " Show the status on the second to last line
+            set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
             set laststatus=2
-            " }}}
               '';
             packages.myplugins = with vimPlugins; {
               start = [ 
