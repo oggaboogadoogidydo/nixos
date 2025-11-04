@@ -439,13 +439,40 @@
             set tabstop=8 softtabstop=0
             set shiftwidth=4 smarttab
             set expandtab
+            set number
+            set cursorline
+            set cursorcolumn
+            set scrolloff=10
+            set incsearch
+            set smartcase
+            set wildmenu
+            
             syntax on
+            
             let g:auto_save = 1
             let g:auto_save_no_updatetime = 1
             let g:auto_save_in_insert_mode = 1
-          '';
-          packages.myplugins = with vimPlugins; {
-            start = [ 
+            
+            " STATUS LINE ------------------------------------------------------------ {{{
+
+            " Clear status line when vimrc is reloaded.
+            set statusline=
+
+            " Status line left side.
+            set statusline+=\ %F\ %M\ %Y\ %R
+
+            " Use a divider to separate the left side from the right side.
+            set statusline+=%=
+
+            " Status line right side.
+            "set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%
+            
+            " Show the status on the second to last line
+            set laststatus=2
+            " }}}
+              '';
+            packages.myplugins = with vimPlugins; {
+              start = [ 
               vim-nix vim-markdown rust-vim syntastic 
               YouCompleteMe vim-polyglot ale vim-auto-save 
             ];
