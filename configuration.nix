@@ -421,6 +421,7 @@
         zenith-nvidia 
         sniffnet
         unstable.espanso-wayland
+        brightnessctl
 
       # === Development Environments ===
         python3 
