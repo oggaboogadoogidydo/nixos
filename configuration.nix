@@ -422,6 +422,7 @@
         sniffnet
         unstable.espanso-wayland
         brightnessctl
+        clock-rs
 
       # === Development Environments ===
         python3 
