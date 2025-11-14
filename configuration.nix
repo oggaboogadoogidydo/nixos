@@ -510,6 +510,7 @@
         unstable.spacenav-cube-example
         unstable.spnavcfg 
         unstable.libspnav
+        libimobiledevice
     ];
   };
 
