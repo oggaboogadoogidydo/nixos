@@ -487,7 +487,7 @@
         numbat
       
       # === Games ===
-        unstable.modrinth-app
+        modrinth-app
         bastet 
         ninvaders
         dwarf-fortress-packages.dwarf-fortress-full
