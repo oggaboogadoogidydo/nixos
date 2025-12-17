@@ -39,9 +39,9 @@
   # ==========================================================================
   # Systemd Configuration
   # ==========================================================================
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=10s
-  '';
+  systemd.settings.Manager = {
+    DefaultTimeoutStopSec = "10s";
+  };
 
   # ==========================================================================
   # Networking Configuration
@@ -185,13 +185,10 @@
       };
     };
 
-  services.n8n = {
-    enable = true;
-    openFirewall = true;
-    settings = {
-      
-    };
-  };
+#  services.n8n = {
+#    enable = true;
+#    openFirewall = true;
+#  };
 
   systemd.services.n8n.serviceConfig = {
     User = "n8n";
@@ -221,7 +218,13 @@
     };
 
     # D-Bus message bus
-  services.dbus.enable = true;
+  services.dbus.implementation = "dbus";
+
+  # Espanso
+  services.espanso = {
+      package = pkgs.espanso-wayland;
+      enable = true;
+  };
 
   # ==========================================================================
   # Hardware Configuration
@@ -427,7 +430,7 @@
         jdk17
       
       # === Custom Vim Configuration ===
-      (vim_configurable.customize {
+      (vim-full.customize {
         name = "vim";
         vimrcConfig = {
           customRC = ''
@@ -473,7 +476,7 @@
 
       # === Applications ===
         firefox 
-        floorp
+        floorp-bin
         libreoffice-qt-fresh 
         alacritty
         ani-cli 
@@ -491,14 +494,13 @@
         unstable.ferdium
         kicad
         unstable.ollama-cuda 
-        unstable.n8n
+#        unstable.n8n
         blender 
         unstable.freecad-wayland
         sweethome3d.application
         thonny 
         unstable.arduino-ide
         unstable.cura-appimage
-        espanso-wayland
 
       # === Hardware Drivers ===
         unstable.spacenavd 
@@ -522,26 +524,6 @@
       });
     })
   ];
-
-  # ==========================================================================
-  # Directory & Permission Management
-  # ==========================================================================
-  systemd.tmpfiles.rules = [
-
-    "d /home/bobw/ 0750 bobw fileshare - -"
-    "d /home/bobw/ 0770 bobw fileshare - -"
-    "Z /home/bobw/ 0770 bobw fileshare - -"
-
-    "f  /home/bobw/.ssh/id_ed25519 0600 bobw fileshare -"
-  ];
-
-  environment.etc."gitconfig-for-n8n".text = ''
-    [safe]
-      directory = /home/bobw/Documents/Notes
-      directory = /home/bobw/Documents/Archive
-      directory = /home/bobw/Documents/Library
-      directory = /home/bobw/Documents/Projects
-  '';
 
   # ==========================================================================
   # Insecure Package Exceptions
