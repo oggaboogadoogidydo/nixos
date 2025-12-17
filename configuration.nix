@@ -216,6 +216,7 @@
     
     # Text expansion
   services.espanso = {
+      package = pkgs.espanso-wayland;
       enable = true;
     };
 
@@ -418,9 +419,7 @@
         usbtop
         docker 
         nvidia-container-toolkit
-        zenith-nvidia 
-        sniffnet
-        unstable.espanso-wayland
+        zenith-nvidia
         brightnessctl
         clock-rs
 
@@ -504,6 +503,7 @@
         thonny 
         unstable.arduino-ide
         unstable.cura-appimage
+        # espanso-wayland
 
       # === Hardware Drivers ===
         unstable.spacenavd 
