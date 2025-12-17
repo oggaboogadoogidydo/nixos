@@ -213,13 +213,8 @@
 
     # Bluetooth
   services.blueman.enable = true;
-    
-    # Text expansion
-  services.espanso = {
-      package = pkgs.espanso-wayland;
-      enable = true;
-    };
-
+  
+  # AI Local
   services.ollama = { 
       enable = true;
       acceleration = "cuda";
@@ -503,7 +498,7 @@
         thonny 
         unstable.arduino-ide
         unstable.cura-appimage
-        # espanso-wayland
+        espanso-wayland
 
       # === Hardware Drivers ===
         unstable.spacenavd 
