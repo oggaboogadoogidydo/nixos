@@ -420,6 +420,7 @@
         zenith-nvidia
         brightnessctl
         clock-rs
+        kdotool
 
       # === Development Environments ===
         python3 
