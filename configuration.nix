@@ -421,6 +421,7 @@
         brightnessctl
         clock-rs
         kdotool
+        kdePackages.wayland-protocols
 
       # === Development Environments ===
         python3 
