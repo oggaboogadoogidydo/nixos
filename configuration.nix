@@ -498,7 +498,7 @@
         unstable.ollama-cuda 
 #        unstable.n8n
         blender 
-        unstable.freecad-wayland
+        freecad
         sweethome3d.application
         thonny 
         unstable.arduino-ide
