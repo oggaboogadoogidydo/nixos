@@ -503,6 +503,7 @@
         thonny 
         unstable.arduino-ide
         unstable.cura-appimage
+        lightburn
 
       # === Hardware Drivers ===
         unstable.spacenavd 
