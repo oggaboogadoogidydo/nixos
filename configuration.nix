@@ -503,9 +503,7 @@
         thonny 
         unstable.arduino-ide
         unstable.cura-appimage
-        lightburn
-        meerk40t
-        candle 
+        meerk40t 
 
       # === Hardware Drivers ===
         unstable.spacenavd 
