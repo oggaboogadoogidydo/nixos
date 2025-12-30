@@ -504,6 +504,8 @@
         unstable.arduino-ide
         unstable.cura-appimage
         lightburn
+        meerk40t
+        candle 
 
       # === Hardware Drivers ===
         unstable.spacenavd 
