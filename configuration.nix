@@ -12,7 +12,7 @@
   # Boot Configuration
   # ==========================================================================
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_17;
+    kernelPackages = pkgs.linuxPackages_6_18;
     kernelParams = [ 
       "page_alloc.shuffle=1"  # Security: Randomizes page allocator for ASLR
       "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot. 
@@ -184,17 +184,6 @@
         STOP_CHARGE_THRESH_BAT0 = 80;
       };
     };
-
-#  services.n8n = {
-#    enable = true;
-#    openFirewall = true;
-#  };
-
-  systemd.services.n8n.serviceConfig = {
-    User = "n8n";
-    Group = "fileshare";
-    Environment = [ "GIT_CONFIG_GLOBAL=/etc/gitconfig-for-n8n" ];
-  };
 
     # SSH server
   services.openssh = {
