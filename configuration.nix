@@ -213,7 +213,15 @@
   services.espanso = {
       package = pkgs.espanso-wayland;
       enable = true;
-  };
+    };
+
+  services.marytts = {
+    enable = true;
+    voices = [];
+    settings = {};
+    port = 59125;
+    openFirewall = false;
+    };
 
   # ==========================================================================
   # Hardware Configuration
