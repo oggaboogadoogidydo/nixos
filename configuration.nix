@@ -501,6 +501,7 @@
         unstable.arduino-ide
         unstable.cura-appimage
         meerk40t 
+        inkscape
 
       # === Hardware Drivers ===
         unstable.spacenavd 
