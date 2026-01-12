@@ -504,7 +504,8 @@
         inkscape
         piper-tts
         speechd
-        
+        pied
+
       # === Hardware Drivers ===
         unstable.spacenavd 
         unstable.spacenav-cube-example
