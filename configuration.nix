@@ -215,13 +215,6 @@
       enable = true;
     };
 
-#  services.marytts = {
-#    enable = true;
-#    voices = [];
-#    settings = {};
-#    port = 59125;
-#    openFirewall = false;
-#    };
 
   # ==========================================================================
   # Hardware Configuration
@@ -503,8 +496,7 @@
         meerk40t 
         inkscape
         piper-tts
-        speechd
-        pied
+        
 
       # === Hardware Drivers ===
         unstable.spacenavd 
