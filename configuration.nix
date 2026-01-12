@@ -215,17 +215,17 @@
       enable = true;
     };
 
-  services.marytts = {
-    enable = true;
-    voices = [];
-    settings = {};
-    port = 59125;
-    openFirewall = false;
-    };
+#  services.marytts = {
+#    enable = true;
+#    voices = [];
+#    settings = {};
+#    port = 59125;
+#    openFirewall = false;
+#    };
 
   # ==========================================================================
   # Hardware Configuration
-  # ==========================================================================
+  # ====piper======================================================================
   hardware = {
     graphics.enable = true;
     enableAllFirmware = true;
@@ -502,7 +502,9 @@
         unstable.cura-appimage
         meerk40t 
         inkscape
-
+        piper-tts
+        speechd
+        
       # === Hardware Drivers ===
         unstable.spacenavd 
         unstable.spacenav-cube-example
