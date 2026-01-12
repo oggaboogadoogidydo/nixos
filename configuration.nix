@@ -412,6 +412,7 @@
         clock-rs
         kdotool
         kdePackages.wayland-protocols
+        ffmpeg
 
       # === Development Environments ===
         python3 
