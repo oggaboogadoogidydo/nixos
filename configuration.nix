@@ -497,7 +497,7 @@
         meerk40t 
         inkscape
         piper-tts
-        
+        whisperx        
 
       # === Hardware Drivers ===
         unstable.spacenavd 
