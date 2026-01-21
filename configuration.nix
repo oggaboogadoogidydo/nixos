@@ -498,6 +498,8 @@
         inkscape
         piper-tts
         whisperx        
+        epr
+        lue
 
       # === Hardware Drivers ===
         unstable.spacenavd 
