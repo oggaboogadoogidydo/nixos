@@ -215,6 +215,8 @@
       enable = true;
     };
 
+  # Speechd
+  services.speechd.enable = true;
 
   # ==========================================================================
   # Hardware Configuration
