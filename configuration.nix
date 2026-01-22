@@ -387,7 +387,7 @@
       eza = "eza --sort=Name --group-directories-first -1 --long --smart-group --header --time=modified --time-style=full-iso --total-size --git --classify=always --dereference --color=auto --icons=auto --tree --level=2";
       rebuild = "cd /etc/nixos/ && sudo git add * && sudo nixos-rebuild switch && sudo git commit && sudo git push";
       startWM = "nvidia-offload uwsm start hyprland.desktop";
-      piper = "piper -m ~/Documents/Projects/Orbit/VoiceModules/en-US-amy-medium.onnx";
+      piper-tts = "piper -m ~/Documents/Projects/Orbit/VoiceModules/en-US-amy-medium.onnx";
     };
 
     # ==========================================================================
