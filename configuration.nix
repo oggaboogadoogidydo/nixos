@@ -416,14 +416,6 @@
         kdotool
         kdePackages.wayland-protocols
         ffmpeg_6
-
-      # === Development Environments ===
-        python3 
-        rustup 
-        cargo-generate 
-        gcc_multi
-        jdk11 
-        jdk17
       
       # === Custom Vim Configuration ===
       (vim-full.customize {
