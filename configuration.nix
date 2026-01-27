@@ -416,7 +416,8 @@
         kdotool
         kdePackages.wayland-protocols
         ffmpeg_6
-      
+        unstable.witr
+
       # === Custom Vim Configuration ===
       (vim-full.customize {
         name = "vim";
@@ -490,7 +491,9 @@
         unstable.arduino-ide
         unstable.cura-appimage
         meerk40t 
-        inkscape
+        (inkscape-with-extensions.override {
+          inkscapeExtensions = with inkscape-extensions; [ inkstitch inkcut hexmap textext ];
+        })
         piper-tts
         whisperx        
         epr
@@ -518,12 +521,17 @@
       });
     })
   ];
+  
+  # Fonts
+#  fonts.packges = [
+#    pkgs.haskellPackages.SVGFonts
+#  ];
 
   # ==========================================================================
   # Insecure Package Exceptions
   # ==========================================================================
   nixpkgs.config.permittedInsecurePackages = [
-    "python3.11-youtube-dl-2021.12.17"
-    "electron-27.3.11"
+    # "python3.11-youtube-dl-2021.12.17"
+    # "electron-27.3.11"
   ];
 }
