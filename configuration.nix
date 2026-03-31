@@ -417,6 +417,7 @@
         kdePackages.wayland-protocols
         ffmpeg_6
         unstable.witr
+        fuzzel
 
       # === Custom Vim Configuration ===
       (vim-full.customize {
@@ -460,7 +461,6 @@
         wayland-protocols 
         wayland-utils
         wl-clipboard
-        unstable.anyrun 
         uwsm
 
       # === Applications ===
@@ -494,10 +494,8 @@
         (inkscape-with-extensions.override {
           inkscapeExtensions = with inkscape-extensions; [ inkstitch inkcut hexmap textext ];
         })
-        piper-tts
-        whisperx        
-        epr
-        lue
+        piper-tts       
+        # epr
 
       # === Hardware Drivers ===
         unstable.spacenavd 
