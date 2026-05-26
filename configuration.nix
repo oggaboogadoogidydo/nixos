@@ -206,14 +206,14 @@
       acceleration = "cuda";
     };
 
-    # D-Bus message bus
-  services.dbus.implementation = "dbus";
-
   # Espanso
   services.espanso = {
       package = pkgs.espanso-wayland;
       enable = true;
     };
+
+  # Hypridle
+  services.hypridle.enable = true;
 
   # Speechd
 #  services.speechd.enable = true;
@@ -285,7 +285,13 @@
     hyprland = {
       enable = true;
       xwayland.enable = true;
+      withUWSM = true;
     };
+    hyprlock = {
+      enable = true;
+    };
+
+    uwsm.enable = true;
 
     # Bash configuration
     bash = {
