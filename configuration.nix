@@ -15,10 +15,12 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ 
       "page_alloc.shuffle=1"  # Security: Randomizes page allocator for ASLR
-      "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot. 
+      "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot.
+      "acpi_osi=Linux" 
+      "pcie_aspm=off"
     ];  
-    blacklistedKernelModules = [ "eeepc-wmi" ];
-    kernelModules = [ "asus-wmi" "asus-nb-wmi" ]; 
+    # blacklistedKernelModules = [ "eeepc-wmi" ];
+    # kernelModules = [ "asus-wmi" "asus-nb-wmi" ]; 
     loader = {
       systemd-boot = {
         enable = true;
@@ -155,9 +157,8 @@
   
     # ASUS ROG control services
   services.asusd = {
-      enable = true;
-      };
-  services.supergfxd.enable = true;
+    enable = true;
+    };
 
     # Advanced power management
   services.tlp = {
