@@ -12,11 +12,13 @@
   # Boot Configuration
   # ==========================================================================
   boot = {
-    kernelPackages = pkgs.linuxPackages_6_18;
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [ 
       "page_alloc.shuffle=1"  # Security: Randomizes page allocator for ASLR
       "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot. 
-    ];
+    ];  
+    blacklistedKernelModules = [ "eeepc-wmi" ];
+    kernelModules = [ "asus-wmi" "asus-nb-wmi" ]; 
     loader = {
       systemd-boot = {
         enable = true;
@@ -344,6 +346,7 @@
     # ==========================================================================
     systemPackages = with pkgs; let
       unstable = import <unstable> { config.allowUnfree = true; };
+      personal = import <personalPkgs> {};
     in [
       # === System Utilities ===
         asusctl 
@@ -420,6 +423,7 @@
         ani-cli 
         ytmdl 
         numbat
+        personal.numara
       
       # === Games ===
         unstable.prismlauncher
