@@ -77,6 +77,20 @@
     };
   };
 
+  # =========================================================================
+  # Anti Virus and Security Configurations
+  # =========================================================================
+  services.clamav = {
+    daemon.enable = true;
+    daemon.settings = {};
+    scanner.enable = true;
+    scanner.interval = "*-*-* 04:00:00";
+    updater.enable = true;
+    updater.frequency = 6;
+    updater.settings = {};
+    clamonacc.enable = true;
+  };
+
   # ==========================================================================
   # X11 Configuration (Required for some applications)
   # ==========================================================================
@@ -450,6 +464,11 @@
         })
         piper-tts       
         # epr
+
+      # === Security Programs ===
+        lynis
+        clamav
+        clamtk
 
       # === Hardware Drivers ===
         unstable.spacenavd 
