@@ -206,11 +206,11 @@
     # Bluetooth
   services.blueman.enable = true;
   
-  # AI Local
-  services.ollama = { 
-      enable = true;
-      package = pkgs.ollama-cuda;
-    };
+#  # AI Local
+#  services.ollama = { 
+#      enable = true;
+#      package = pkgs.ollama-cuda;
+#    };
 
   # Espanso
   services.espanso = {
@@ -450,14 +450,14 @@
 
       # === Productivity & Creative ===
         unstable.ferdium
-        kicad
-        unstable.ollama-cuda 
+#        kicad
+#        unstable.ollama-cuda 
 #        unstable.n8n
-        blender 
+#        blender 
         freecad
         sweethome3d.application
-        thonny 
-        unstable.arduino-ide
+#        thonny 
+#        unstable.arduino-ide
         unstable.cura-appimage
         meerk40t 
         (inkscape-with-extensions.override {
