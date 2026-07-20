@@ -385,6 +385,7 @@
         ffmpeg_6
         unstable.witr
         fuzzel
+        personal.tg-send
 
       # === Custom Vim Configuration ===
       (vim-full.customize {
