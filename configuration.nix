@@ -18,7 +18,14 @@
       "usbcore.autosuspend=-1" # Theoretically fix usb devices turning off when connected during boot.
       "acpi_osi=Linux" 
       "pcie_aspm=off"
+
+      "quiet"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
     ];  
+    consoleLogLevel = 0;
+    initrd.verbose = false;
     # blacklistedKernelModules = [ "eeepc-wmi" ];
     # kernelModules = [ "asus-wmi" "asus-nb-wmi" ]; 
     loader = {
@@ -305,6 +312,22 @@
       undistractMe.enable = true;
       undistractMe.timeout = 60;
       undistractMe.playSound = true;
+      
+      loginShellInit = ''
+        # Only run on tty1, and only if no display server is running
+        if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+          # Global flag stored in volatile memory (resets on reboot)
+          FLAG="/run/hyprland-started"
+      
+          # Only start if the flag does NOT exist
+          if [ ! -f "$FLAG" ]; then
+            # Create the flag immediately to prevent any future login from starting it
+            touch "$FLAG"
+          # Replace the shell with Hyprland via uwsm
+          exec uwsm start hyprland
+          fi
+        fi
+      '';
     };
   };
 
@@ -440,7 +463,8 @@
         ytmdl 
         numbat
         personal.numara
-      
+        unstable.spotatui
+
       # === Games ===
         unstable.prismlauncher
         # bastet 
