@@ -313,21 +313,21 @@
       undistractMe.timeout = 60;
       undistractMe.playSound = true;
       
-      loginShellInit = ''
-        # Only run on tty1, and only if no display server is running
-        if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
-          # Global flag stored in volatile memory (resets on reboot)
-          FLAG="/run/hyprland-started"
-      
-          # Only start if the flag does NOT exist
-          if [ ! -f "$FLAG" ]; then
-            # Create the flag immediately to prevent any future login from starting it
-            touch "$FLAG"
-          # Replace the shell with Hyprland via uwsm
-          exec uwsm start hyprland
-          fi
-        fi
-      '';
+#      loginShellInit = ''
+#        # Only run on tty1, and only if no display server is running
+#        if [ -z "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = "1" ]; then
+#          # Global flag stored in volatile memory (resets on reboot)
+#          FLAG="/run/hyprland-started"
+#      
+#          # Only start if the flag does NOT exist
+#          if [ ! -f "$FLAG" ]; then
+#            # Create the flag immediately to prevent any future login from starting it
+#            touch "$FLAG"
+#          # Replace the shell with Hyprland via uwsm
+#          exec uwsm start hyprland
+#          fi
+#        fi
+#      '';
     };
   };
 
